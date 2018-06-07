@@ -1,20 +1,54 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<form class="form-signin" [ngClass]="{'was-validated':(userForm.touched || userForm.dirty) && !userForm.valid}" [formGroup]="userForm"
+  (ngSubmit)="onSubmit()" novalidate>
 
+  <div class="text-center mb-4">
+    <h1 class="h3 mb-3 font-weight-normal">Floating labels</h1>
+    <p>Build form controls with floating labels via the
+      <code>:placeholder-shown</code> pseudo-element.
+      <a href="https://caniuse.com/#feat=css-placeholder-shown">Works in latest Chrome, Safari, and Firefox.</a>
+    </p>
+  </div>
+
+  <div class="form-label-group">
+    <input type="text" id="inputFullname" class="form-control" placeholder="Fullname" formControlName="fullname">
+    <label for="inputFullname">Fullname</label>
+    <ng-container *ngIf="fullname.invalid && (fullname.dirty || fullname.touched)">
+      <div class="invalid-feedback" *ngIf="fullname.errors['required']">
+        Please provide a Fullname.
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="form-label-group">
+    <input type="text" id="inputEmail" class="form-control" placeholder="Email address" formControlName="email">
+    <label for="inputEmail">Email address</label>
+    <ng-container *ngIf="email.invalid && (email.dirty || email.touched)">
+      <div class="invalid-feedback" *ngIf="email.errors['required']">
+        Please provide a email.
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="form-label-group">
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" aria-describedby="passwordHelpBlock"
+      formControlName="password">
+    <label for="inputPassword">Password</label>
+    <small id="passwordHelpBlock" class="form-text text-muted">
+      Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters,
+      or emoji.
+    </small>
+    <ng-container *ngIf="password.invalid && (password.dirty || password.touched)">
+      <div class="invalid-feedback" *ngIf="password.errors['required']">
+        Please provide a valid Password.
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember-me"> Remember me
+    </label>
+  </div>
+
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+</form>

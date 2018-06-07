@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/scss/bootstrap';
+
+:root {
+  --input-padding-x: .75rem;
+  --input-padding-y: .75rem;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
