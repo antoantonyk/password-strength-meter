@@ -15,6 +15,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "password-strength-meter": [
+        "dist/password-strength-meter"
+      ],
+      "password-strength-meter/*": [
+        "dist/password-strength-meter/*"
+      ]
+    }
   }
 }

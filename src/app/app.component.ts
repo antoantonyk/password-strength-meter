@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import * as zxcvbn from 'zxcvbn';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

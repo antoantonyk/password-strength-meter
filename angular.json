@@ -125,6 +125,46 @@
           }
         }
       }
+    },
+    "password-strength-meter": {
+      "root": "projects/password-strength-meter",
+      "sourceRoot": "projects/password-strength-meter/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/password-strength-meter/tsconfig.lib.json",
+            "project": "projects/password-strength-meter/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/password-strength-meter/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/password-strength-meter/src/test.ts",
+            "tsConfig": "projects/password-strength-meter/tsconfig.spec.json",
+            "karmaConfig": "projects/password-strength-meter/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/password-strength-meter/tsconfig.lib.json",
+              "projects/password-strength-meter/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "password-strength"
