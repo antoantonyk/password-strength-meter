@@ -1,8 +1,7 @@
-<form class="form-signup" [ngClass]="{'was-validated':(userForm.touched || userForm.dirty) && !userForm.valid}" [formGroup]="userForm"
-  (ngSubmit)="onSubmit()" novalidate>
+<form class="form-signup needs-validation" [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate>
 
   <div class="text-center mb-4">
-    <h1 class="h3 mb-3 font-weight-normal">Floating labels</h1>
+    <h1 class="h3 mb-3 font-weight-normal">Join the team</h1>
     <p>Build form controls with floating labels via the
       <code>:placeholder-shown</code> pseudo-element.
       <a href="https://caniuse.com/#feat=css-placeholder-shown">Works in latest Chrome, Safari, and Firefox.</a>
@@ -10,38 +9,34 @@
   </div>
 
   <div class="form-label-group">
-    <input type="text" id="inputFullname" class="form-control" placeholder="Fullname" formControlName="fullname">
+    <input type="text" id="inputFullname" class="form-control" [ngClass]="{'is-invalid':fullname.invalid && (fullname.dirty || fullname.touched)}"
+      placeholder="Fullname" formControlName="fullname">
     <label for="inputFullname">Fullname</label>
-    <ng-container *ngIf="fullname.invalid && (fullname.dirty || fullname.touched)">
-      <div class="invalid-feedback" *ngIf="fullname.errors['required']">
-        Please provide a Fullname.
-      </div>
-    </ng-container>
+    <div class="invalid-feedback" *ngIf="fullname.errors['required']">
+      Please provide a Fullname.
+    </div>
   </div>
 
   <div class="form-label-group">
-    <input type="text" id="inputEmail" class="form-control" placeholder="Email address" formControlName="email">
+    <input type="text" id="inputEmail" class="form-control" [ngClass]="{'is-invalid':email.invalid && (email.dirty || email.touched)}"
+      placeholder="Email address" formControlName="email">
     <label for="inputEmail">Email address</label>
-    <ng-container *ngIf="email.invalid && (email.dirty || email.touched)">
-      <div class="invalid-feedback" *ngIf="email.errors['required']">
-        Please provide a email.
-      </div>
-    </ng-container>
+    <div class="invalid-feedback" *ngIf="email.errors['required']">
+      Please provide a email.
+    </div>
   </div>
 
   <div class="form-label-group">
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" aria-describedby="passwordHelpBlock"
-      formControlName="password">
+    <input type="password" id="inputPassword" class="form-control" [ngClass]="{'is-invalid':password.invalid && (password.dirty || password.touched)}"
+      placeholder="Password" aria-describedby="passwordHelpBlock" formControlName="password">
     <label for="inputPassword">Password</label>
     <small id="passwordHelpBlock" class="form-text text-muted">
       Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters,
       or emoji.
     </small>
-    <ng-container *ngIf="password.invalid && (password.dirty || password.touched)">
-      <div class="invalid-feedback" *ngIf="password.errors['required']">
-        Please provide a valid Password.
-      </div>
-    </ng-container>
+    <div class="invalid-feedback" *ngIf="password.errors['required']">
+      Please provide a valid Password.
+    </div>
   </div>
 
   <div class="checkbox mb-3">
