@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 
-import * as zxcvbn from 'zxcvbn';
+import * as zxcvbn_ from 'zxcvbn';
+
+const zxcvbn = zxcvbn_;
 
 @Injectable()
 export class PasswordStrengthMeterService {
@@ -18,7 +20,6 @@ export class PasswordStrengthMeterService {
    */
   score(password): number {
     const result = zxcvbn(password);
-    console.log(result);
     return result.score;
   }
 
@@ -30,7 +31,6 @@ export class PasswordStrengthMeterService {
    */
   scoreWithFeedback(password): { score: number; feedback: { suggestions: Array<string>; warning: string } } {
     const result = zxcvbn(password);
-    console.log(result);
     return { score: result.score, feedback: result.feedback };
   }
 }
