@@ -5,27 +5,37 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:lib": "ng build password-strength-meter --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "keywords": [
+    "angular 6",
+    "password-strength",
+    "password-strength-component",
+    "password-strength-meter",
+    "password-strength-meter-component",
+    "angular password strength meter"
+  ],
   "private": true,
   "dependencies": {
-    "@angular/common": "^6.0.3",
-    "@angular/core": "^6.0.3",
-    "@angular/compiler": "^6.0.3",
     "@angular/animations": "^6.0.3",
+    "@angular/common": "^6.0.3",
+    "@angular/compiler": "^6.0.3",
+    "@angular/core": "^6.0.3",
     "@angular/forms": "^6.0.3",
     "@angular/http": "^6.0.3",
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "@types/zxcvbn": "4.4.0",
+    "angular-password-strength-meter": "0.0.2",
     "bootstrap": "^4.1.1",
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",
-    "zxcvbn": "4.4.2",
-    "@types/zxcvbn": "4.4.0",
-    "zone.js": "^0.8.26"
+    "zone.js": "^0.8.26",
+    "zxcvbn": "4.4.2"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^6.0.3",
