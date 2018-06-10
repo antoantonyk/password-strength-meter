@@ -28,6 +28,12 @@ export class AppComponent {
     });
   }
 
+  onPasswordStrengthChanged(strength) {
+    console.log('====================================');
+    console.log('onPasswordStrengthChanged', strength);
+    console.log('====================================');
+  }
+
   onSubmit() {
     if (this.userForm.valid) {
       console.log('====================================');

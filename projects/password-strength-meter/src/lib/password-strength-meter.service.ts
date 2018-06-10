@@ -25,11 +25,11 @@ export class PasswordStrengthMeterService {
 
   /**
    * this will return the password strength score with feedback messages
-   * return type { score: number; feedback: { suggestions: Array<string>; warning: string } }
+   * return type { score: number; feedback: { suggestions: string[]; warning: string } }
    *
    * @param password
    */
-  scoreWithFeedback(password): { score: number; feedback: { suggestions: Array<string>; warning: string } } {
+  scoreWithFeedback(password): { score: number; feedback: { suggestions: string[]; warning: string } } {
     const result = zxcvbn(password);
     return { score: result.score, feedback: result.feedback };
   }

@@ -1,10 +1,11 @@
 {
-  "name": "password-strength",
+  "name": "password-strength-meter",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:app": "ng build --prod --output-path docs --base-href password-strength-meter",
     "build:lib": "ng build password-strength-meter --prod",
     "test": "ng test",
     "lint": "ng lint",
@@ -30,7 +31,7 @@
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
     "@types/zxcvbn": "4.4.0",
-    "angular-password-strength-meter": "0.0.2",
+    "angular-password-strength-meter": "0.0.4",
     "bootstrap": "^4.1.1",
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",
