@@ -4,13 +4,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "lib",
+      "password-strength-meter",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "lib",
+      "password-strength-meter",
       "kebab-case"
     ]
   }

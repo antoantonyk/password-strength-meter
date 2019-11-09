@@ -16,7 +16,7 @@ export class PasswordStrengthMeterService {
    *  3 - safely unguessable
    *  4 - very unguessable
    *
-   *  @param password
+   *  @param password - Password
    */
   score(password): number {
     const result = zxcvbn(password);
@@ -27,7 +27,7 @@ export class PasswordStrengthMeterService {
    * this will return the password strength score with feedback messages
    * return type { score: number; feedback: { suggestions: string[]; warning: string } }
    *
-   * @param password
+   * @param password - Password
    */
   scoreWithFeedback(password): { score: number; feedback: { suggestions: string[]; warning: string } } {
     const result = zxcvbn(password);

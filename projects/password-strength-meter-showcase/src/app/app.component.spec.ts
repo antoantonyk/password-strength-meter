@@ -6,6 +6,7 @@ import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
 import { AppComponent } from './app.component';
 import { By } from '@angular/platform-browser';
 
+/* tslint:disable:no-string-literal */
 describe('AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
@@ -31,7 +32,7 @@ describe('AppComponent', () => {
 
     it('fullname field validity', () => {
       let errors = {};
-      let fullName = component.userForm.controls['fullname'];
+      const fullName = component.userForm.controls['fullname'];
       expect(fullName.valid).toBeFalsy();
 
       // fullName field is required
@@ -46,7 +47,7 @@ describe('AppComponent', () => {
 
     it('email field validity', () => {
       let errors = {};
-      let email = component.userForm.controls['email'];
+      const email = component.userForm.controls['email'];
       expect(email.valid).toBeFalsy();
 
       // Email field is required
@@ -70,7 +71,7 @@ describe('AppComponent', () => {
       spyOn(component, 'onPasswordStrengthChanged');
       fixture.detectChanges();
       let errors = {};
-      let password = component.userForm.controls['password'];
+      const password = component.userForm.controls['password'];
       const passwordStrengthMeter = fixture.debugElement.query(By.css('.strength-meter-fill'));
 
       // Email field is required

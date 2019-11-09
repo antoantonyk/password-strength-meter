@@ -48,7 +48,7 @@ export class PasswordStrengthMeterComponent implements OnInit, OnChanges {
   ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['password']) {
+    if (changes.password) {
       this.calculatePasswordStrength();
     }
   }

@@ -25,7 +25,12 @@
       "angular-password-strength-meter/*": [
         "dist/password-strength-meter/*"
       ]
-    }
+    },
+    "plugins": [
+      {
+        "name": "typescript-tslint-plugin"
+      }
+    ]
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

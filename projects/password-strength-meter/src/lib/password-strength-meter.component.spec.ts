@@ -5,6 +5,7 @@ import { By } from '@angular/platform-browser';
 import { PasswordStrengthMeterComponent } from './password-strength-meter.component';
 import { PasswordStrengthMeterService } from './password-strength-meter.service';
 
+/* tslint:disable:no-string-literal */
 describe('PasswordStrengthMeterComponent', () => {
   let component: PasswordStrengthMeterComponent;
   let fixture: ComponentFixture<PasswordStrengthMeterComponent>;
