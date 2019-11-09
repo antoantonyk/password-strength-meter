@@ -8,6 +8,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AppComponent {
   userForm: FormGroup;
+
   get fullname() {
     return this.userForm.get('fullname');
   }
@@ -23,7 +24,7 @@ export class AppComponent {
   constructor(private fb: FormBuilder) {
     this.userForm = this.fb.group({
       fullname: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.pattern('[^ @]*@[^ @]*')]],
       password: ['', Validators.required]
     });
   }
