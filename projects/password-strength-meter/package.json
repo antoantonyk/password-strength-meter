@@ -1,10 +1,9 @@
 {
-  "name": "angular-password-strength-meter",
-  "version": "0.0.4",
-  "license": "MIT",
+  "name": "password-strength-meter",
+  "version": "1.0.0",
   "peerDependencies": {
-    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
-    "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/common": "^8.2.13",
+    "@angular/core": "^8.2.13",
     "zxcvbn": "4.4.2",
     "@types/zxcvbn": "4.4.0"
   },

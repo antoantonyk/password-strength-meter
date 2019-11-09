@@ -1,4 +1,4 @@
-# Password Strength Meter For angular 6
+# Password Strength Meter For angular 8
 
 To display the strength of the password with a visual feedback.
 
