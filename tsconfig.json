@@ -19,10 +19,10 @@
       "dom"
     ],
     "paths": {
-      "password-strength-meter": [
+      "angular-password-strength-meter": [
         "dist/password-strength-meter"
       ],
-      "password-strength-meter/*": [
+      "angular-password-strength-meter/*": [
         "dist/password-strength-meter/*"
       ]
     }

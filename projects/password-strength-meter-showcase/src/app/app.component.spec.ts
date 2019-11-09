@@ -1,7 +1,7 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { PasswordStrengthMeterModule } from 'password-strength-meter';
+import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
 
 import { AppComponent } from './app.component';
 import { By } from '@angular/platform-browser';
