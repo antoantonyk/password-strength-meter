@@ -21,7 +21,7 @@ script:
   - npm run build:lib
   - npm run test:app -- -- --watch=false --browsers=ChromeHeadless
   - npm run build:app:prod
-  - mv docs/index.html docs/404.html
+  - cp docs/index.html docs/404.html
 deploy:
   provider: pages
   skip_cleanup: true

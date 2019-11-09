@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/antoantonyk/password-strength-meter.svg?branch=master)](https://travis-ci.com/antoantonyk/password-strength-meter)
+
 # Password Strength Meter For angular 8
 
 To display the strength of the password with a visual feedback.
