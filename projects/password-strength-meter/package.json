@@ -1,6 +1,6 @@
 {
   "name": "angular-password-strength-meter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "peerDependencies": {
     "@angular/common": "^8.2.13",
     "@angular/core": "^8.2.13",
@@ -8,11 +8,20 @@
     "@types/zxcvbn": "4.4.0"
   },
   "keywords": [
-    "angular 6",
+    "angular 8",
     "password-strength",
     "password-strength-component",
     "password-strength-meter",
     "password-strength-meter-component",
     "angular password strength meter"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/antoantonyk/password-strength-meter.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/antoantonyk/password-strength-meter/issues"
+  },
+  "homepage": "https://github.com/antoantonyk/password-strength-meter"
 }
