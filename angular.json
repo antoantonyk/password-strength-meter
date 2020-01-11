@@ -139,7 +139,8 @@
           "options": {
             "main": "projects/password-strength-meter/src/test.ts",
             "tsConfig": "projects/password-strength-meter/tsconfig.spec.json",
-            "karmaConfig": "projects/password-strength-meter/karma.conf.js"
+            "karmaConfig": "projects/password-strength-meter/karma.conf.js",
+            "codeCoverage": true
           }
         },
         "lint": {

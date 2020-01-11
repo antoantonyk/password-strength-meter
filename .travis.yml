@@ -22,6 +22,10 @@ script:
   - npm run test:app -- -- --watch=false --browsers=ChromeHeadless
   - npm run build:app:prod
   - cp docs/index.html docs/404.html
+
+after_script:
+  - cat ./coverage/password-strength-meter/lcov.info | coveralls
+
 deploy:
   provider: pages
   skip_cleanup: true
