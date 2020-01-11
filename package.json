@@ -1,6 +1,6 @@
 {
   "name": "password-strength-meter",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "scripts": {
     "ng": "ng",
     "serve": "ng serve",
@@ -17,7 +17,7 @@
     "e2e": "ng e2e"
   },
   "keywords": [
-    "angular 6",
+    "angular 8",
     "password-strength",
     "password-strength-component",
     "password-strength-meter",
@@ -49,6 +49,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "coveralls": "^3.0.9",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
@@ -64,5 +65,14 @@
     "tslint": "~5.15.0",
     "typescript": "~3.5.3",
     "typescript-tslint-plugin": "^0.5.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/antoantonyk/password-strength-meter.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/antoantonyk/password-strength-meter/issues"
+  },
+  "homepage": "https://github.com/antoantonyk/password-strength-meter"
 }

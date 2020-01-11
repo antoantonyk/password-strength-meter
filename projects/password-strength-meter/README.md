@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.com/antoantonyk/password-strength-meter.svg?branch=master)](https://travis-ci.com/antoantonyk/password-strength-meter)
+[![npm version](https://badge.fury.io/js/angular-password-strength-meter.svg)](https://badge.fury.io/js/angular-password-strength-meter)
+[![Coverage Status](https://coveralls.io/repos/github/antoantonyk/password-strength-meter/badge.svg?branch=master)](https://coveralls.io/github/antoantonyk/password-strength-meter?branch=master)
 
 # Password Strength Meter For angular 8
 
@@ -9,6 +11,8 @@ To display the strength of the password with a visual feedback.
 This lib was developed based on the following [tutorial](https://scotch.io/tutorials/password-strength-meter-in-angularjs).
 
 How then is password strength measured? `Dropbox developed an algorithm for a realistic password strength estimator inspired by password crackers. This algorithm is packaged in a Javascript library called zxcvbn. In addition, the package contains a dictionary of commonly used English words, names and passwords.`
+
+Need lib for Vue.js? [Click here](https://github.com/antoantonyk/vue-password-strength-meter)
 
 # Demo
 
