@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/antoantonyk/password-strength-meter.svg?branch=master)](https://travis-ci.com/antoantonyk/password-strength-meter)
+[![npm version](https://badge.fury.io/js/angular-password-strength-meter.svg)](https://badge.fury.io/js/angular-password-strength-meter)
 
 # Password Strength Meter For angular 8
 
