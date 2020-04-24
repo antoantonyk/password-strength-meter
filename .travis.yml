@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - '10'
+  - '12'
 dist: trusty
 sudo: false
 
@@ -18,7 +18,7 @@ install:
 script:
   - npm run lint
   - npm run test:lib -- -- --watch=false --browsers=ChromeHeadless
-  - npm run build:lib
+  - npm run build:lib:prod
   - npm run test:app -- -- --watch=false --browsers=ChromeHeadless
   - npm run build:app:prod
   - cp docs/index.html docs/404.html
