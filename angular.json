@@ -18,7 +18,7 @@
             "main": "projects/password-strength-meter-showcase/src/main.ts",
             "polyfills": "projects/password-strength-meter-showcase/src/polyfills.ts",
             "tsConfig": "projects/password-strength-meter-showcase/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "projects/password-strength-meter-showcase/src/favicon.ico",
               "projects/password-strength-meter-showcase/src/assets"
@@ -41,7 +41,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -132,6 +131,11 @@
           "options": {
             "tsConfig": "projects/password-strength-meter/tsconfig.lib.json",
             "project": "projects/password-strength-meter/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/password-strength-meter/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -161,7 +165,7 @@
   "defaultProject": "password-strength-meter-showcase",
   "schematics": {
     "@schematics/angular:component": {
-      "styleext": "scss"
+      "style": "scss"
     }
   }
 }
