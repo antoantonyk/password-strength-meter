@@ -6,7 +6,7 @@
 
 To display the strength of the password with a visual feedback.
 
-[Password Strength Meter](https://www.npmjs.com/package/angular-password-strength-meter) use [zxcvbn](https://github.com/dropbox/zxcvbn) to estimate the strength of the password and also provide a visual feedback with suggestions and warning messages.
+[Password Strength Meter](https://www.npmjs.com/package/angular-password-strength-meter) use [@contentpass/zxcvbn](https://github.com/contentpass/zxcvbn) to estimate the strength of the password and also provide a visual feedback with suggestions and warning messages.
 
 This lib was developed based on the following [tutorial](https://scotch.io/tutorials/password-strength-meter-in-angularjs).
 
@@ -24,10 +24,10 @@ Need lib for Vue.js? [Click here](https://github.com/antoantonyk/vue-password-st
 
 ## Get Started
 
-**Step 1:** Since this lib was depending upon the [zxcvbn](https://github.com/dropbox/zxcvbn) lib, install it first
+**Step 1:** Since this lib was depending upon the [@contentpass/zxcvbn](https://github.com/contentpass/zxcvbn) lib, install it first
 
 ```sh
-npm install zxcvbn@4.4.2 --save
+npm install @contentpass/zxcvbn@4.4.3 --save
 ```
 
 **Step 2:** Install password-strength-meter
@@ -69,4 +69,5 @@ export class AppModule { }
 | minPasswordLength | Input()  |  number  |                             8                              | min length of password to calculate the strength                                                                        |
 | enableFeedback    | Input()  | boolean  |                           false                            | to show/hide the suggestions and warning messages                                                                       |
 | colors            | Input()  | string[] | ['darkred', 'orangered', 'orange', 'yellowgreen', 'green'] | to overide the meter colors, password strength range is 0 - 4, for strength 0 equals first color in the array and so on |
+| options           | Input()  | any      | {} | `@contentpass/zxcvbn` options |
 | strengthChange    | Output() |  number  |                             -                              | emits the strength of the provided password in number -> range 0 - 4                                                    |

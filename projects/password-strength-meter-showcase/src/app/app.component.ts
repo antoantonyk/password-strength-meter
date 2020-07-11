@@ -9,6 +9,12 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class AppComponent {
   userForm: FormGroup;
 
+  options = {
+    feedback_messages : {
+      uncommon_words_are_better : 'This is a custom message ...',
+    }
+  };
+
   get fullname() {
     return this.userForm.get('fullname');
   }

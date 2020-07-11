@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import * as zxcvbn_ from 'zxcvbn';
+import * as zxcvbn_ from '@contentpass/zxcvbn';
 
 const zxcvbn = zxcvbn_;
 
@@ -29,8 +29,8 @@ export class PasswordStrengthMeterService {
    *
    * @param password - Password
    */
-  scoreWithFeedback(password): { score: number; feedback: { suggestions: string[]; warning: string } } {
-    const result = zxcvbn(password);
+  scoreWithFeedback(password, options : any = {}): { score: number; feedback: { suggestions: string[]; warning: string } } {
+    const result = zxcvbn(password, options);
     return { score: result.score, feedback: result.feedback };
   }
 }
