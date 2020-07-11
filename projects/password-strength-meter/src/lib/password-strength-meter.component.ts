@@ -23,6 +23,8 @@ export class PasswordStrengthMeterComponent implements OnInit, OnChanges {
 
   @Input() enableFeedback = false;
 
+  @Input() options : any;
+
   @Input() colors: string[] = [];
 
   @Output() strengthChange = new EventEmitter<number>();
@@ -62,7 +64,8 @@ export class PasswordStrengthMeterComponent implements OnInit, OnChanges {
     } else {
       if (this.enableFeedback) {
         const result = this.passwordStrengthMeterService.scoreWithFeedback(
-          this.password
+          this.password,
+          this.options
         );
         this.passwordStrength = result.score;
         this.feedback = result.feedback;
