@@ -27,7 +27,7 @@ Need lib for Vue.js? [Click here](https://github.com/antoantonyk/vue-password-st
 **Step 1:** Since this lib was depending upon the [zxcvbn](https://github.com/dropbox/zxcvbn) lib, install it first
 
 ```sh
-npm install zxcvbn@4.4.2 --save
+npm install zxcvbn3 --save
 ```
 
 **Step 2:** Install password-strength-meter

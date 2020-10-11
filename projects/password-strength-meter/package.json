@@ -4,8 +4,7 @@
   "peerDependencies": {
     "@angular/common": "^10.1.5",
     "@angular/core": "^10.1.5",
-    "zxcvbn": "4.4.2",
-    "@types/zxcvbn": "4.4.0"
+    "zxcvbn3": "^0.1.1"
   },
   "keywords": [
     "angular 10",
