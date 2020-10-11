@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/antoantonyk/password-strength-meter/issues"
   },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
   "homepage": "https://github.com/antoantonyk/password-strength-meter"
 }
