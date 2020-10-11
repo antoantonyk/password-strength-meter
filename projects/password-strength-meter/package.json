@@ -1,14 +1,13 @@
 {
   "name": "angular-password-strength-meter",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "peerDependencies": {
-    "@angular/common": "~9.1.3",
-    "@angular/core": "~9.1.3",
-    "zxcvbn": "4.4.2",
-    "@types/zxcvbn": "4.4.0"
+    "@angular/common": "^10.1.5",
+    "@angular/core": "^10.1.5",
+    "zxcvbn3": "^0.1.1"
   },
   "keywords": [
-    "angular 9",
+    "angular 10",
     "password-strength",
     "password-strength-component",
     "password-strength-meter",
@@ -22,6 +21,9 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/antoantonyk/password-strength-meter/issues"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
   },
   "homepage": "https://github.com/antoantonyk/password-strength-meter"
 }

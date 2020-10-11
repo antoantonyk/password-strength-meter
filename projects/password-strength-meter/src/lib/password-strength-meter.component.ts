@@ -57,8 +57,10 @@ export class PasswordStrengthMeterComponent implements OnInit, OnChanges {
     // TODO validation logic optimization
     if (!this.password) {
       this.passwordStrength = null;
+      this.feedback = null;
     } else if (this.password && this.password.length < this.minPasswordLength) {
       this.passwordStrength = 0;
+      this.feedback = null;
     } else {
       if (this.enableFeedback) {
         const result = this.passwordStrengthMeterService.scoreWithFeedback(

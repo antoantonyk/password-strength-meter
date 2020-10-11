@@ -4,7 +4,7 @@
   "lib": {
     "entryFile": "src/public-api.ts",
     "umdModuleIds": {
-      "zxcvbn": "zxcvbn_"
+      "zxcvbn3": "zxcvbn3"
     }
   }
 }

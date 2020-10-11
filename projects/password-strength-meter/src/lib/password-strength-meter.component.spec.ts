@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { SimpleChange } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
@@ -11,17 +11,21 @@ describe('PasswordStrengthMeterComponent', () => {
   let fixture: ComponentFixture<PasswordStrengthMeterComponent>;
   let passwordStrengthMeterService: PasswordStrengthMeterService;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [PasswordStrengthMeterComponent],
-      providers: []
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [PasswordStrengthMeterComponent],
+        providers: [],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PasswordStrengthMeterComponent);
     component = fixture.componentInstance;
-    passwordStrengthMeterService = fixture.debugElement.injector.get(PasswordStrengthMeterService);
+    passwordStrengthMeterService = fixture.debugElement.injector.get(
+      PasswordStrengthMeterService
+    );
     fixture.detectChanges();
   });
 
@@ -33,7 +37,7 @@ describe('PasswordStrengthMeterComponent', () => {
     spyOn<any>(component, 'calculatePasswordStrength');
     component.password = '123456';
     component.ngOnChanges({
-      password: new SimpleChange(null, component.password, true)
+      password: new SimpleChange(null, component.password, true),
     });
     fixture.detectChanges();
     expect(component['calculatePasswordStrength']).toHaveBeenCalled();
@@ -44,6 +48,7 @@ describe('PasswordStrengthMeterComponent', () => {
     component['calculatePasswordStrength']();
     fixture.detectChanges();
     expect(component.passwordStrength).toBeNull();
+    expect(component.feedback).toBeNull();
   });
 
   it('should change the password strength as 0 on fail to meet the min password length', () => {
@@ -51,6 +56,7 @@ describe('PasswordStrengthMeterComponent', () => {
     component['calculatePasswordStrength']();
     fixture.detectChanges();
     expect(component.passwordStrength).toBe(0);
+    expect(component.feedback).toBeNull();
   });
 
   it('should update the password strength meter', () => {
@@ -60,7 +66,9 @@ describe('PasswordStrengthMeterComponent', () => {
     component.password = '123asd123';
     component['calculatePasswordStrength']();
     fixture.detectChanges();
-    const passwordMeter = fixture.debugElement.query(By.css('.strength-meter-fill'));
+    const passwordMeter = fixture.debugElement.query(
+      By.css('.strength-meter-fill')
+    );
 
     expect(passwordMeter.attributes['data-strength']).toBe('2');
     expect(component.passwordStrength).toBe(2);
@@ -89,8 +97,8 @@ describe('PasswordStrengthMeterComponent', () => {
       score: 2,
       feedback: {
         suggestions: ['Add another word or two', 'Uncommon words are better.'],
-        warning: 'This is a very common password'
-      }
+        warning: 'This is a very common password',
+      },
     });
 
     component.password = '123asd123';
@@ -99,20 +107,36 @@ describe('PasswordStrengthMeterComponent', () => {
     fixture.detectChanges();
 
     expect(fixture.debugElement.query(By.css('.password-feedback'))).toBeNull();
-    expect(fixture.debugElement.query(By.css('.password-suggetion'))).toBeNull();
-    expect(passwordStrengthMeterService.scoreWithFeedback).toHaveBeenCalledTimes(0);
+    expect(
+      fixture.debugElement.query(By.css('.password-suggetion'))
+    ).toBeNull();
+    expect(
+      passwordStrengthMeterService.scoreWithFeedback
+    ).toHaveBeenCalledTimes(0);
 
     component.enableFeedback = true;
     component['calculatePasswordStrength']();
     fixture.detectChanges();
 
-    expect(passwordStrengthMeterService.scoreWithFeedback).toHaveBeenCalledTimes(1);
-    expect(fixture.debugElement.query(By.css('.password-feedback'))).toBeTruthy();
-    expect(fixture.debugElement.query(By.css('.password-suggetion'))).toBeTruthy();
+    expect(
+      passwordStrengthMeterService.scoreWithFeedback
+    ).toHaveBeenCalledTimes(1);
+    expect(
+      fixture.debugElement.query(By.css('.password-feedback'))
+    ).toBeTruthy();
+    expect(
+      fixture.debugElement.query(By.css('.password-suggetion'))
+    ).toBeTruthy();
   });
 
   it('should use the custom colors', () => {
-    component.colors = ['darkred', 'orangered', 'purple', 'yellowgreen', 'green'];
+    component.colors = [
+      'darkred',
+      'orangered',
+      'purple',
+      'yellowgreen',
+      'green',
+    ];
     expect(component.getMeterFillColor(2)).toEqual('purple');
   });
 });

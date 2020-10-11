@@ -2,7 +2,7 @@
 [![npm version](https://badge.fury.io/js/angular-password-strength-meter.svg)](https://badge.fury.io/js/angular-password-strength-meter)
 [![Coverage Status](https://coveralls.io/repos/github/antoantonyk/password-strength-meter/badge.svg?branch=master)](https://coveralls.io/github/antoantonyk/password-strength-meter?branch=master)
 
-# Password Strength Meter For angular 9
+# Password Strength Meter For angular 10
 
 To display the strength of the password with a visual feedback.
 
@@ -27,7 +27,7 @@ Need lib for Vue.js? [Click here](https://github.com/antoantonyk/vue-password-st
 **Step 1:** Since this lib was depending upon the [zxcvbn](https://github.com/dropbox/zxcvbn) lib, install it first
 
 ```sh
-npm install zxcvbn@4.4.2 --save
+npm install zxcvbn3 --save
 ```
 
 **Step 2:** Install password-strength-meter
