@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
-import { zxcvbn } from "zxcvbn3";
+import { zxcvbn } from 'zxcvbn3';
 
 @Injectable()
 export class PasswordStrengthMeterService {

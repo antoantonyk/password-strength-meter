@@ -1,4 +1,4 @@
-import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
@@ -11,17 +11,19 @@ describe('AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, PasswordStrengthMeterModule],
-      declarations: [AppComponent]
-    }).compileComponents();
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [ReactiveFormsModule, PasswordStrengthMeterModule],
+        declarations: [AppComponent],
+      }).compileComponents();
 
-    fixture = TestBed.createComponent(AppComponent);
-    component = fixture.debugElement.componentInstance;
-  }));
+      fixture = TestBed.createComponent(AppComponent);
+      component = fixture.debugElement.componentInstance;
+    })
+  );
 
-  it('should create the app', async(() => {
+  it('should create the app', waitForAsync(() => {
     expect(component).toBeTruthy();
   }));
 
@@ -72,7 +74,9 @@ describe('AppComponent', () => {
       fixture.detectChanges();
       let errors = {};
       const password = component.userForm.controls['password'];
-      const passwordStrengthMeter = fixture.debugElement.query(By.css('.strength-meter-fill'));
+      const passwordStrengthMeter = fixture.debugElement.query(
+        By.css('.strength-meter-fill')
+      );
 
       // Email field is required
       errors = password.errors || {};
