@@ -1,9 +1,9 @@
 {
   "name": "angular-password-strength-meter",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "peerDependencies": {
-    "@angular/common": "^10.1.5",
-    "@angular/core": "^10.1.5",
+    "@angular/common": "~11.0.2",
+    "@angular/core": "~11.0.2",
     "zxcvbn3": "^0.1.1"
   },
   "keywords": [
