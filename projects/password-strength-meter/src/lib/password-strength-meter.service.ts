@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 
 import { zxcvbn } from 'zxcvbn3';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class PasswordStrengthMeterService {
-  constructor() {}
+  constructor() { }
 
   /**
    *  this will return the password strength score in number
