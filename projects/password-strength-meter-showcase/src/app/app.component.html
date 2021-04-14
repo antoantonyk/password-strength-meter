@@ -1,50 +1,87 @@
-<form class="form-signup needs-validation" [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate>
-
+<form
+  class="form-signup needs-validation"
+  [formGroup]="userForm"
+  (ngSubmit)="onSubmit()"
+  novalidate
+>
   <div class="text-center mb-4">
     <h1 class="h3 mb-3 font-weight-normal">Password Strength Meter - Demo</h1>
-    <p>To display the strength of the password with a visual feedback. PasswordStrengthMeter use
-      <a href="https://github.com/dropbox/zxcvbn">zxcvbn</a> to estimate the strength of the password and also provide a visual feedback with suggestions and warning
-      messages.
+    <p>
+      To display the strength of the password with a visual feedback.
+      PasswordStrengthMeter use
+      <a href="https://github.com/dropbox/zxcvbn">zxcvbn</a> to estimate the
+      strength of the password and also provide a visual feedback with
+      suggestions and warning messages.
     </p>
   </div>
 
   <div class="form-label-group">
-    <input type="text" id="inputFullname" class="form-control" [ngClass]="{'is-invalid':fullname.invalid && (fullname.dirty || fullname.touched)}"
-      placeholder="Fullname" formControlName="fullname" autocomplete='name'>
+    <input
+      type="text"
+      id="inputFullname"
+      class="form-control"
+      [ngClass]="{
+        'is-invalid': fullname.invalid && (fullname.dirty || fullname.touched)
+      }"
+      placeholder="Fullname"
+      formControlName="fullname"
+      autocomplete="name"
+    />
     <label for="inputFullname">Fullname</label>
-    <div class="invalid-feedback">
-      Please provide a Fullname.
-    </div>
+    <div class="invalid-feedback">Please provide a Fullname.</div>
   </div>
 
   <div class="form-label-group">
-    <input type="text" id="inputEmail" class="form-control" [ngClass]="{'is-invalid':email.invalid && (email.dirty || email.touched)}"
-      placeholder="Email address" formControlName="email" autocomplete='email'>
+    <input
+      type="text"
+      id="inputEmail"
+      class="form-control"
+      [ngClass]="{
+        'is-invalid': email.invalid && (email.dirty || email.touched)
+      }"
+      placeholder="Email address"
+      formControlName="email"
+      autocomplete="email"
+    />
     <label for="inputEmail">Email address</label>
-    <div class="invalid-feedback">
-      Please provide a email.
-    </div>
+    <div class="invalid-feedback">Please provide a email.</div>
   </div>
 
   <div class="form-label-group">
-    <input type="password" id="inputPassword" class="form-control" [ngClass]="{'is-invalid':password.invalid && (password.dirty || password.touched)}"
-      placeholder="Password" aria-describedby="passwordHelpBlock" formControlName="password" autocomplete="current-password">
+    <input
+      type="password"
+      id="inputPassword"
+      class="form-control"
+      [ngClass]="{
+        'is-invalid': password.invalid && (password.dirty || password.touched)
+      }"
+      placeholder="Password"
+      aria-describedby="passwordHelpBlock"
+      formControlName="password"
+      autocomplete="current-password"
+    />
     <label for="inputPassword">Password</label>
-    <password-strength-meter [password]="password.value" [enableFeedback]="true" (strengthChange)="onPasswordStrengthChanged($event)"></password-strength-meter>
+    <password-strength-meter
+      [password]="password.value"
+      [enableFeedback]="true"
+      (strengthChange)="onPasswordStrengthChanged($event)"
+    ></password-strength-meter>
     <small id="passwordHelpBlock" class="form-text text-muted">
-      Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters,
-      or emoji.
+      Your password must be 8-20 characters long, contain letters and numbers,
+      and must not contain spaces, special characters, or emoji.
     </small>
-    <div class="invalid-feedback">
-      Please provide a valid Password.
-    </div>
+    <div class="invalid-feedback">Please provide a valid Password.</div>
   </div>
 
   <div class="checkbox mb-3">
-    <label>
-      <input type="checkbox" value="remember-me"> Remember me
-    </label>
+    <label> <input type="checkbox" value="remember-me" /> Remember me </label>
   </div>
 
-  <button id="btn-submit" class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+  <button
+    id="btn-submit"
+    class="btn btn-lg btn-primary btn-block"
+    type="submit"
+  >
+    Sign up
+  </button>
 </form>
