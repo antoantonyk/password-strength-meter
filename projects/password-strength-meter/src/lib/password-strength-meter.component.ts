@@ -5,15 +5,18 @@ import {
   OnChanges,
   SimpleChanges,
   Output,
-  EventEmitter
-} from '@angular/core';
+  EventEmitter,
+} from "@angular/core";
 
-import { PasswordStrengthMeterService } from './password-strength-meter.service';
+import { PasswordStrengthMeterService } from "./password-strength-meter.service";
 
 @Component({
-  selector: 'password-strength-meter',
-  templateUrl: './password-strength-meter.component.html',
-  styleUrls: ['./password-strength-meter.component.scss'],
+  selector: "password-strength-meter",
+  templateUrl: "./password-strength-meter.component.html",
+  styleUrls: ["./password-strength-meter.component.scss"],
+  host: {
+    class: "psm",
+  },
 })
 export class PasswordStrengthMeterComponent implements OnInit, OnChanges {
   @Input() password: string;
@@ -24,7 +27,7 @@ export class PasswordStrengthMeterComponent implements OnInit, OnChanges {
 
   @Input() colors: string[] = [];
 
-  @Input() meterNumber: number = 5;
+  @Input() numberOfProgressBarItems: number = 5;
 
   @Output() strengthChange = new EventEmitter<number>();
 
@@ -32,31 +35,17 @@ export class PasswordStrengthMeterComponent implements OnInit, OnChanges {
 
   feedback: { suggestions: string[]; warning: string } = null;
 
-  meterCollection: number[] = Array(this.meterNumber).fill(1);
-
   private prevPasswordStrength = null;
-
-  private defaultColours = [
-    'darkred',
-    'orangered',
-    'orange',
-    'yellowgreen',
-    'green'
-  ];
 
   constructor(
     private passwordStrengthMeterService: PasswordStrengthMeterService
-  ) { }
+  ) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.password) {
       this.calculatePasswordStrength();
-    }
-
-    if (changes.meterNumber) {
-      this.meterCollection = Array(this.meterNumber).fill(1);
     }
   }
 
@@ -88,25 +77,5 @@ export class PasswordStrengthMeterComponent implements OnInit, OnChanges {
       this.strengthChange.emit(this.passwordStrength);
       this.prevPasswordStrength = this.passwordStrength;
     }
-  }
-
-  getMeterFillColor(strength: number) {
-    if (!strength || strength < 0 || strength > 5) {
-      return this.colors[0] ? this.colors[0] : this.defaultColours[0];
-    }
-
-    return this.colors[strength]
-      ? this.colors[strength]
-      : this.defaultColours[strength];
-  }
-
-  getMeterWidth(): string {
-    const width = (100 / this.meterNumber);
-    return `${width}%`
-  }
-
-  getFillMeterWidth(strength: number): string {
-    const strengthInPercentage = strength !== null ? ((strength + 1) / 5) * 100 : 0;
-    return `${strengthInPercentage}%`
   }
 }

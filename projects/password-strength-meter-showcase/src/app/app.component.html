@@ -18,17 +18,17 @@
   <div class="form-label-group">
     <input
       type="text"
-      id="inputFullname"
+      id="inputFullName"
       class="form-control"
       [ngClass]="{
-        'is-invalid': fullname.invalid && (fullname.dirty || fullname.touched)
+        'is-invalid': fullName.invalid && (fullName.dirty || fullName.touched)
       }"
-      placeholder="Fullname"
-      formControlName="fullname"
+      placeholder="Full name"
+      formControlName="fullName"
       autocomplete="name"
     />
-    <label for="inputFullname">Fullname</label>
-    <div class="invalid-feedback">Please provide a Fullname.</div>
+    <label for="inputFullName">Full name</label>
+    <div class="invalid-feedback">Please provide a Full name.</div>
   </div>
 
   <div class="form-label-group">
@@ -63,6 +63,7 @@
     <label for="inputPassword">Password</label>
     <password-strength-meter
       [password]="password.value"
+      [numberOfProgressBarItems]="5"
       [enableFeedback]="true"
       (strengthChange)="onPasswordStrengthChanged($event)"
     ></password-strength-meter>
