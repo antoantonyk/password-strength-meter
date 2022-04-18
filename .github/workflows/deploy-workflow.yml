@@ -44,6 +44,12 @@ jobs:
       - name: Build - App
         run: npm run build:app:prod
 
+      - name: Coveralls
+        uses: coverallsapp/github-action@1.1.3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: './coverage/password-strength-meter/lcov.info'
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.3.0
         with:
