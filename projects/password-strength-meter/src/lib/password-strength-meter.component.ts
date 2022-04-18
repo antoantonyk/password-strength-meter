@@ -6,17 +6,15 @@ import {
   SimpleChanges,
   Output,
   EventEmitter,
-} from "@angular/core";
+  HostBinding,
+} from '@angular/core';
 
-import { PasswordStrengthMeterService } from "./password-strength-meter.service";
+import { PasswordStrengthMeterService } from './password-strength-meter.service';
 
 @Component({
-  selector: "password-strength-meter",
-  templateUrl: "./password-strength-meter.component.html",
-  styleUrls: ["./password-strength-meter.component.scss"],
-  host: {
-    class: "psm",
-  },
+  selector: 'password-strength-meter',
+  templateUrl: './password-strength-meter.component.html',
+  styleUrls: ['./password-strength-meter.component.scss'],
 })
 export class PasswordStrengthMeterComponent implements OnInit, OnChanges {
   @Input() password: string;
@@ -27,9 +25,11 @@ export class PasswordStrengthMeterComponent implements OnInit, OnChanges {
 
   @Input() colors: string[] = [];
 
-  @Input() numberOfProgressBarItems: number = 5;
+  @Input() numberOfProgressBarItems = 5;
 
   @Output() strengthChange = new EventEmitter<number>();
+
+  @HostBinding('class') baseClass = 'psm';
 
   passwordStrength: number = null;
 

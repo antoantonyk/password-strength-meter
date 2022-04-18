@@ -2,14 +2,16 @@ import {
   Directive,
   ElementRef,
   Input,
+  OnChanges,
   Renderer2,
   SimpleChanges,
-} from "@angular/core";
+} from '@angular/core';
 
 @Directive({
-  selector: ".psm__progress-bar",
+  // tslint:disable-next-line
+  selector: '.psm__progress-bar',
 })
-export class ProgressBarDirective {
+export class ProgressBarDirective implements OnChanges {
   @Input()
   numberOfProgressBarItems: number;
 
@@ -22,11 +24,11 @@ export class ProgressBarDirective {
   progressBar: HTMLDivElement;
 
   private defaultColors = [
-    "darkred",
-    "orangered",
-    "orange",
-    "yellowgreen",
-    "green",
+    'darkred',
+    'orangered',
+    'orange',
+    'yellowgreen',
+    'green',
   ];
 
   constructor(
@@ -46,7 +48,7 @@ export class ProgressBarDirective {
 
   setProgressBarItems() {
     const progressBarItemContainer = this.progressBar.querySelector(
-      ".psm__progress-bar-items"
+      '.psm__progress-bar-items'
     );
     const width = 100 / this.numberOfProgressBarItems;
 
@@ -57,9 +59,9 @@ export class ProgressBarDirective {
     Array(this.numberOfProgressBarItems)
       .fill(1)
       .forEach((_) => {
-        const progressBarItem = this.renderer.createElement("div");
-        this.renderer.addClass(progressBarItem, "psm__progress-bar-item");
-        this.renderer.setStyle(progressBarItem, "width", `${width}%`);
+        const progressBarItem = this.renderer.createElement('div');
+        this.renderer.addClass(progressBarItem, 'psm__progress-bar-item');
+        this.renderer.setStyle(progressBarItem, 'width', `${width}%`);
         this.renderer.appendChild(progressBarItemContainer, progressBarItem);
       });
   }
@@ -78,29 +80,29 @@ export class ProgressBarDirective {
 
     this.renderer.setAttribute(
       this.progressBar,
-      "aria-valuenow",
+      'aria-valuenow',
       progressBarOverlayWidthInPx
     );
     this.renderer.setAttribute(
       this.progressBar,
-      "data-strength",
-      `${this.passwordStrength || "0"}`
+      'data-strength',
+      `${this.passwordStrength || '0'}`
     );
 
     const overlayElement = this.progressBar.querySelector<HTMLDivElement>(
-      ".psm__progress-bar-overlay"
+      '.psm__progress-bar-overlay'
     );
 
     if (overlayElement) {
       this.renderer.setStyle(
         overlayElement,
-        "width",
+        'width',
         progressBarOverlayWidthInPx
       );
 
       this.renderer.setStyle(
         overlayElement,
-        "background-color",
+        'background-color',
         progressBarOverlayColor
       );
     }
