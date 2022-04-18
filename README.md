@@ -19,7 +19,7 @@ Need lib for Vue.js? [Click here](https://github.com/antoantonyk/vue-password-st
 [See Demo Here](https://antoantonyk.github.io/password-strength-meter/)
 
 ```html
-  <password-strength-meter [password]="password"></password-strength-meter>
+<password-strength-meter [password]="password"></password-strength-meter>
 ```
 
 ## Get Started
@@ -63,10 +63,11 @@ export class AppModule { }
 
 ## API
 
-| option            |   bind   |   type   |                          default                           | description                                                                                                             |
-| :---------------- | :------: | :------: | :--------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------- |
-| password          | Input()  |  string  |                             -                              | password to calculate its strength                                                                                      |
-| minPasswordLength | Input()  |  number  |                             8                              | min length of password to calculate the strength                                                                        |
-| enableFeedback    | Input()  | boolean  |                           false                            | to show/hide the suggestions and warning messages                                                                       |
-| colors            | Input()  | string[] | ['darkred', 'orangered', 'orange', 'yellowgreen', 'green'] | to overide the meter colors, password strength range is 0 - 4, for strength 0 equals first color in the array and so on |
-| strengthChange    | Output() |  number  |                             -                              | emits the strength of the provided password in number -> range 0 - 4                                                    |
+| option                   |   bind   |   type   |                          default                           | description                                                                                                                                                                                                          |
+| :----------------------- | :------: | :------: | :--------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| password                 | Input()  |  string  |                             -                              | password to calculate its strength                                                                                                                                                                                   |
+| minPasswordLength        | Input()  |  number  |                             8                              | min length of password to calculate the strength                                                                                                                                                                     |
+| enableFeedback           | Input()  | boolean  |                           false                            | to show/hide the suggestions and warning messages                                                                                                                                                                    |
+| numberOfProgressBarItems | Input()  |  number  |                             5                              | change the number to update the number of progress bar items                                                                                                                                                         |
+| colors                   | Input()  | string[] | ['darkred', 'orangered', 'orange', 'yellowgreen', 'green'] | to overide the meter colors, password strength range is 0 - 4, for strength 0 equals first color in the array and so on. <br /><br />Note - length of the colors array should match the number of progress bar items |
+| strengthChange           | Output() |  number  |                             -                              | emits the strength of the provided password in number -> range 0 - 4                                                                                                                                                 |

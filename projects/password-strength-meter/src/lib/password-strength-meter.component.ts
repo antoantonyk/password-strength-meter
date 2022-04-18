@@ -5,16 +5,18 @@ import {
   OnChanges,
   SimpleChanges,
   Output,
-  EventEmitter
-} from '@angular/core';
+  EventEmitter,
+} from "@angular/core";
 
-import { PasswordStrengthMeterService } from './password-strength-meter.service';
+import { PasswordStrengthMeterService } from "./password-strength-meter.service";
 
 @Component({
-  selector: 'password-strength-meter',
-  templateUrl: './password-strength-meter.component.html',
-  styleUrls: ['./password-strength-meter.component.scss'],
-  providers: [PasswordStrengthMeterService]
+  selector: "password-strength-meter",
+  templateUrl: "./password-strength-meter.component.html",
+  styleUrls: ["./password-strength-meter.component.scss"],
+  host: {
+    class: "psm",
+  },
 })
 export class PasswordStrengthMeterComponent implements OnInit, OnChanges {
   @Input() password: string;
@@ -25,6 +27,8 @@ export class PasswordStrengthMeterComponent implements OnInit, OnChanges {
 
   @Input() colors: string[] = [];
 
+  @Input() numberOfProgressBarItems: number = 5;
+
   @Output() strengthChange = new EventEmitter<number>();
 
   passwordStrength: number = null;
@@ -32,14 +36,6 @@ export class PasswordStrengthMeterComponent implements OnInit, OnChanges {
   feedback: { suggestions: string[]; warning: string } = null;
 
   private prevPasswordStrength = null;
-
-  private defaultColours = [
-    'darkred',
-    'orangered',
-    'orange',
-    'yellowgreen',
-    'green'
-  ];
 
   constructor(
     private passwordStrengthMeterService: PasswordStrengthMeterService
@@ -81,15 +77,5 @@ export class PasswordStrengthMeterComponent implements OnInit, OnChanges {
       this.strengthChange.emit(this.passwordStrength);
       this.prevPasswordStrength = this.passwordStrength;
     }
-  }
-
-  getMeterFillColor(strength) {
-    if (!strength || strength < 0 || strength > 5) {
-      return this.colors[0] ? this.colors[0] : this.defaultColours[0];
-    }
-
-    return this.colors[strength]
-      ? this.colors[strength]
-      : this.defaultColours[strength];
   }
 }
