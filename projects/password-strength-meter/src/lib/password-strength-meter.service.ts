@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
-import { zxcvbn } from 'zxcvbn3';
+import { zxcvbn } from "zxcvbn3";
 
-@Injectable()
+@Injectable({ providedIn: "root" })
 export class PasswordStrengthMeterService {
   constructor() {}
 
@@ -27,9 +27,10 @@ export class PasswordStrengthMeterService {
    *
    * @param password - Password
    */
-  scoreWithFeedback(
-    password
-  ): { score: number; feedback: { suggestions: string[]; warning: string } } {
+  scoreWithFeedback(password): {
+    score: number;
+    feedback: { suggestions: string[]; warning: string };
+  } {
     const result = zxcvbn(password);
     return { score: result.score, feedback: result.feedback };
   }
