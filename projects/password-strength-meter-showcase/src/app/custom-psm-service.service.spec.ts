@@ -1,4 +1,4 @@
-/* tslint:disable:no-unused-variable */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { TestBed, inject, waitForAsync } from '@angular/core/testing';
 import { CustomPsmServiceService } from './custom-psm-service.service';

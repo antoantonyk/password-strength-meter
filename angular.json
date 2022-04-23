@@ -109,6 +109,15 @@
               "devServerTarget": "password-strength-meter-showcase:serve:production"
             }
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/password-strength-meter-showcase/**/*.ts",
+              "projects/password-strength-meter-showcase/**/*.html"
+            ]
+          }
         }
       }
     },
@@ -138,6 +147,15 @@
             "karmaConfig": "projects/password-strength-meter/karma.conf.js",
             "codeCoverage": true
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/password-strength-meter/**/*.ts",
+              "projects/password-strength-meter/**/*.html"
+            ]
+          }
         }
       }
     }
@@ -147,5 +165,8 @@
     "@schematics/angular:component": {
       "style": "scss"
     }
+  },
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
   }
 }
