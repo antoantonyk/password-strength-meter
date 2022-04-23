@@ -1,5 +1,4 @@
 [![CI](https://github.com/antoantonyk/password-strength-meter/actions/workflows/ci-workflow.yml/badge.svg)](https://github.com/antoantonyk/password-strength-meter/actions/workflows/ci-workflow.yml)
-[![Deploy 🚀](https://github.com/antoantonyk/password-strength-meter/actions/workflows/deploy-workflow.yml/badge.svg)](https://github.com/antoantonyk/password-strength-meter/actions/workflows/deploy-workflow.yml)
 [![npm version](https://badge.fury.io/js/angular-password-strength-meter.svg)](https://badge.fury.io/js/angular-password-strength-meter)
 [![Coverage Status](https://coveralls.io/repos/github/antoantonyk/password-strength-meter/badge.svg?branch=master)](https://coveralls.io/github/antoantonyk/password-strength-meter?branch=master)
 
