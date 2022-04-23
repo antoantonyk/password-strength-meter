@@ -9,7 +9,7 @@ import {
   HostBinding,
 } from '@angular/core';
 
-import { PasswordStrengthMeterService } from './password-strength-meter.service';
+import { IPasswordStrengthMeterService } from './password-strength-meter.service';
 
 @Component({
   selector: 'password-strength-meter',
@@ -38,7 +38,7 @@ export class PasswordStrengthMeterComponent implements OnInit, OnChanges {
   private prevPasswordStrength = null;
 
   constructor(
-    private passwordStrengthMeterService: PasswordStrengthMeterService
+    private passwordStrengthMeterService: IPasswordStrengthMeterService
   ) {}
 
   ngOnInit() {}

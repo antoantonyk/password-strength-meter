@@ -13,7 +13,7 @@ describe('AppComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, PasswordStrengthMeterModule],
+      imports: [ReactiveFormsModule, PasswordStrengthMeterModule.forRoot()],
       declarations: [AppComponent],
     }).compileComponents();
 
