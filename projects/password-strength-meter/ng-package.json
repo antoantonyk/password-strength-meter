@@ -5,10 +5,6 @@
     "ngcc.config.js"
   ],
   "lib": {
-    "entryFile": "src/public-api.ts",
-    "umdModuleIds": {
-      "@zxcvbn-ts/core": "zxcvbnCore",
-      "@zxcvbn-ts/language-en": "zxcvbnEnPackage"
-    }
+    "entryFile": "src/public-api.ts"
   }
 }
