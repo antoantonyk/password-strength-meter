@@ -30,14 +30,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Checking code quality
+      - name: Lint
         run: npm run lint
 
       - name: Unit Test - Lib
         run: npm run test:lib -- -- --watch=false --browsers=ChromeHeadless
-
-      - name: Build - Lib
-        run: npm run build:lib:prod
 
       - name: Unit Test - App
         run: npm run test:app -- -- --watch=false --browsers=ChromeHeadless
@@ -47,36 +44,6 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: './coverage/password-strength-meter/lcov.info'
-
-      - name: Build - App
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        run: npm run build:app:prod
-
-      - name: Deploy 🚀
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        uses: JamesIves/github-pages-deploy-action@v4.3.0
-        with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: docs # The folder the action should deploy.
-
-      - name: Get package version
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        id: package-version
-        uses: martinbeentjes/npm-get-version-action@master
-
-      - name: Create release
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        uses: ncipollo/release-action@v1
-        with:
-          tag: v${{ steps.package-version.outputs.current-version}}
-          commit: ${{ github.sha }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Publish to npm
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        run: npm publish dist/password-strength-meter
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   deploy:
     needs: build
@@ -100,6 +67,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Build - Lib
+        run: npm run build:lib:prod
 
       - name: Build - App
         run: npm run build:app:prod
