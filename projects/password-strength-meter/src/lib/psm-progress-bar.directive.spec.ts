@@ -3,7 +3,11 @@
 import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { PasswordStrengthMeterComponent } from './password-strength-meter.component';
-import { ProgressBarDirective } from './progress-bar.directive';
+import {
+  IPasswordStrengthMeterService,
+  PasswordStrengthMeterService,
+} from './password-strength-meter.service';
+import { PSMProgressBarDirective } from './psm-progress-bar.directive';
 
 describe('Directive: PasswordStrengthMeter - ProgressBar', () => {
   let component: PasswordStrengthMeterComponent;
@@ -11,8 +15,13 @@ describe('Directive: PasswordStrengthMeter - ProgressBar', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ProgressBarDirective, PasswordStrengthMeterComponent],
-      providers: [],
+      declarations: [PSMProgressBarDirective, PasswordStrengthMeterComponent],
+      providers: [
+        {
+          provide: IPasswordStrengthMeterService,
+          useClass: PasswordStrengthMeterService,
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(PasswordStrengthMeterComponent);
@@ -54,7 +63,7 @@ describe('Directive: PasswordStrengthMeter - ProgressBar', () => {
       By.css('.psm__progress-bar')
     ).nativeElement as HTMLDivElement;
 
-    expect(progressBarElement.getAttribute('aria-valuenow')).toEqual('80%');
+    expect(progressBarElement.getAttribute('aria-valuenow')).toEqual('80');
     expect(progressBarElement.getAttribute('data-strength')).toEqual('3');
 
     const progressBarOverlay = fixture.debugElement.query(

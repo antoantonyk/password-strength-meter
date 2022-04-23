@@ -1,6 +1,7 @@
 import {
   Directive,
   ElementRef,
+  HostBinding,
   Input,
   OnChanges,
   Renderer2,
@@ -11,7 +12,7 @@ import {
   // tslint:disable-next-line
   selector: '.psm__progress-bar',
 })
-export class ProgressBarDirective implements OnChanges {
+export class PSMProgressBarDirective implements OnChanges {
   @Input()
   numberOfProgressBarItems: number;
 
@@ -20,6 +21,14 @@ export class ProgressBarDirective implements OnChanges {
 
   @Input()
   colors: string[] = [];
+
+  @HostBinding('attr.aria-valuemin') minProgressVal = 0;
+
+  @HostBinding('attr.aria-valuemax') maxProgressVal = 100;
+
+  @HostBinding('attr.aria-valuenow') currentProgressVal = 0;
+
+  @HostBinding('attr.data-strength') dataPasswordStrength = 0;
 
   progressBar: HTMLDivElement;
 
@@ -78,16 +87,8 @@ export class ProgressBarDirective implements OnChanges {
       progressLevelBasedOnItems
     );
 
-    this.renderer.setAttribute(
-      this.progressBar,
-      'aria-valuenow',
-      progressBarOverlayWidthInPx
-    );
-    this.renderer.setAttribute(
-      this.progressBar,
-      'data-strength',
-      `${this.passwordStrength || '0'}`
-    );
+    this.dataPasswordStrength = this.passwordStrength || 0;
+    this.currentProgressVal = progressBarOverlayWidth;
 
     const overlayElement = this.progressBar.querySelector<HTMLDivElement>(
       '.psm__progress-bar-overlay'

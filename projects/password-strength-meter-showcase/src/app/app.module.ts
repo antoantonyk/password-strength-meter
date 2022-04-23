@@ -7,7 +7,11 @@ import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, ReactiveFormsModule, PasswordStrengthMeterModule],
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    PasswordStrengthMeterModule.forRoot(),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

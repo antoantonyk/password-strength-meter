@@ -1,10 +1,14 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/password-strength-meter",
+  "assets": [
+    "ngcc.config.js"
+  ],
   "lib": {
     "entryFile": "src/public-api.ts",
     "umdModuleIds": {
-      "zxcvbn3": "zxcvbn3"
+      "@zxcvbn-ts/core": "zxcvbnCore",
+      "@zxcvbn-ts/language-en": "zxcvbnEnPackage"
     }
   }
 }

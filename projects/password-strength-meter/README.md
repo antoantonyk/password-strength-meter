@@ -7,7 +7,7 @@
 
 To display the strength of the password with a visual feedback.
 
-[Password Strength Meter](https://www.npmjs.com/package/angular-password-strength-meter) use [zxcvbn](https://github.com/dropbox/zxcvbn) to estimate the strength of the password and also provide a visual feedback with suggestions and warning messages.
+[Password Strength Meter](https://www.npmjs.com/package/angular-password-strength-meter) use [zxcvbn](https://github.com/zxcvbn-ts/zxcvbn) to estimate the strength of the password and also provide a visual feedback with suggestions and warning messages.
 
 This lib was developed based on the following [tutorial](https://scotch.io/tutorials/password-strength-meter-in-angularjs).
 
@@ -25,19 +25,13 @@ Need lib for Vue.js? [Click here](https://github.com/antoantonyk/vue-password-st
 
 ## Get Started
 
-**Step 1:** Since this lib was depending upon the [zxcvbn](https://github.com/dropbox/zxcvbn) lib, install it first
+**Step 1:** npm install
 
 ```sh
-npm install zxcvbn3 --save
+npm install @zxcvbn-ts/core @zxcvbn-ts/language-en angular-password-strength-meter --save
 ```
 
-**Step 2:** Install password-strength-meter
-
-```sh
-npm install angular-password-strength-meter --save
-```
-
-**Step 3:** Import Password Strength Meter Module into your app module
+**Step 2:** Import Password Strength Meter Module into your app module
 
 ```ts
 ....
@@ -49,17 +43,97 @@ import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
     ...
     imports: [
         ....
-        PasswordStrengthMeterModule
+        PasswordStrengthMeterModule.forRoot()
     ],
     ....
 })
 export class AppModule { }
 ```
 
-**Step 4:** use the password-strength-meter component in your app.component.ts
+**Step 3:** use the password-strength-meter component in your app.component.ts
 
 ```ts
   <password-strength-meter [password]="password"></password-strength-meter>
+```
+
+## Use custom zxcvbn options for the password strength meter
+
+You can override the default zxcvbn options by providing the PSM_CONFIG.
+
+Refer to the [zxcvbn documentation](https://zxcvbn-ts.github.io/zxcvbn/guide/getting-started) for more information.
+
+```ts
+....
+import { PasswordStrengthMeterModule, PSM_CONFIG } from 'angular-password-strength-meter';
+import zxcvbnCommonPackage from '@zxcvbn-ts/language-common'
+import zxcvbnEnPackage from '@zxcvbn-ts/language-en'
+
+....
+
+@NgModule({
+    ...
+    imports: [
+        ....
+        PasswordStrengthMeterModule.forRoot()
+    ],
+    providers: [
+      {
+        provide: PSM_CONFIG,
+        useValue: {
+          translations: zxcvbnEnPackage.translations,
+          graphs: zxcvbnCommonPackage.adjacencyGraphs,
+          dictionary: {
+            ...zxcvbnCommonPackage.dictionary,
+            ...zxcvbnEnPackage.dictionary,
+          },
+        }
+      }
+    ],
+    ....
+})
+export class AppModule { }
+```
+
+## Use custom password strength meter service
+
+You can override the default password strength meter service by providing the Custom Service class as follows.
+
+```ts
+....
+import { Injectable } from '@angular/core';
+import { IPasswordStrengthMeterService } from 'angular-password-strength-meter';
+
+@Injectable()
+export class CustomPsmServiceService extends IPasswordStrengthMeterService {
+  score(password: string): number {
+    // TODO - return score 0 - 4 based on password
+    return 1;
+  }
+
+  scoreWithFeedback(password: string): {
+    score: number;
+    feedback: { warning: string; suggestions: string[] };
+  } {
+    // TODO - return score with feedback
+    return { score: 1, feedback: { warning: '', suggestions: [] } };
+  }
+}
+....
+
+import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
+import { CustomPsmServiceService } from './custom-psm-service.service';
+
+
+@NgModule({
+    ...
+    imports: [
+        ....
+        PasswordStrengthMeterModule.forRoot({ serviceClass: CustomPsmServiceService })
+    ],
+    ....
+})
+export class AppModule { }
+
 ```
 
 ## API
