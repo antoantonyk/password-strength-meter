@@ -3,8 +3,11 @@ import { SimpleChange } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 import { PasswordStrengthMeterComponent } from './password-strength-meter.component';
-import { PasswordStrengthMeterService } from './password-strength-meter.service';
-import { ProgressBarDirective } from './progress-bar.directive';
+import {
+  IPasswordStrengthMeterService,
+  PasswordStrengthMeterService,
+} from './password-strength-meter.service';
+import { PSMProgressBarDirective } from './psm-progress-bar.directive';
 
 /* tslint:disable:no-string-literal */
 describe('PasswordStrengthMeterComponent', () => {
@@ -14,8 +17,13 @@ describe('PasswordStrengthMeterComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [PasswordStrengthMeterComponent, ProgressBarDirective],
-      providers: [],
+      declarations: [PasswordStrengthMeterComponent, PSMProgressBarDirective],
+      providers: [
+        {
+          provide: IPasswordStrengthMeterService,
+          useClass: PasswordStrengthMeterService,
+        },
+      ],
     }).compileComponents();
   }));
 
@@ -23,7 +31,7 @@ describe('PasswordStrengthMeterComponent', () => {
     fixture = TestBed.createComponent(PasswordStrengthMeterComponent);
     component = fixture.componentInstance;
     passwordStrengthMeterService = fixture.debugElement.injector.get(
-      PasswordStrengthMeterService
+      IPasswordStrengthMeterService
     );
     fixture.detectChanges();
   });
