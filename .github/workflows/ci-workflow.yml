@@ -43,7 +43,7 @@ jobs:
         uses: coverallsapp/github-action@1.1.3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: './coverage/password-strength-meter/lcov.info'
+          path-to-lcov: './coverage/password-strength-meter/report-lcov/lcov.info'
 
   deploy:
     needs: build

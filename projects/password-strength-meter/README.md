@@ -2,7 +2,7 @@
 [![npm version](https://badge.fury.io/js/angular-password-strength-meter.svg)](https://badge.fury.io/js/angular-password-strength-meter)
 [![Coverage Status](https://coveralls.io/repos/github/antoantonyk/password-strength-meter/badge.svg?branch=master)](https://coveralls.io/github/antoantonyk/password-strength-meter?branch=master)
 
-# Password Strength Meter For angular 10
+# Password Strength Meter For angular 11
 
 To display the strength of the password with a visual feedback.
 
