@@ -1,6 +1,5 @@
 import {
   Component,
-  OnInit,
   Input,
   OnChanges,
   SimpleChanges,
@@ -12,11 +11,12 @@ import {
 import { IPasswordStrengthMeterService } from './password-strength-meter.service';
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'password-strength-meter',
   templateUrl: './password-strength-meter.component.html',
   styleUrls: ['./password-strength-meter.component.scss'],
 })
-export class PasswordStrengthMeterComponent implements OnInit, OnChanges {
+export class PasswordStrengthMeterComponent implements OnChanges {
   @Input() password: string;
 
   @Input() minPasswordLength = 8;
@@ -40,8 +40,6 @@ export class PasswordStrengthMeterComponent implements OnInit, OnChanges {
   constructor(
     private passwordStrengthMeterService: IPasswordStrengthMeterService
   ) {}
-
-  ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.password) {

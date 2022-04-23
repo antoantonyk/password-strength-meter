@@ -98,19 +98,6 @@
             "scripts": []
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/password-strength-meter-showcase/tsconfig.app.json",
-              "projects/password-strength-meter-showcase/tsconfig.spec.json",
-              "projects/password-strength-meter-showcase/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
@@ -121,6 +108,15 @@
             "production": {
               "devServerTarget": "password-strength-meter-showcase:serve:production"
             }
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/password-strength-meter-showcase/**/*.ts",
+              "projects/password-strength-meter-showcase/**/*.html"
+            ]
           }
         }
       }
@@ -153,14 +149,11 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/password-strength-meter/tsconfig.lib.json",
-              "projects/password-strength-meter/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/password-strength-meter/**/*.ts",
+              "projects/password-strength-meter/**/*.html"
             ]
           }
         }
@@ -172,5 +165,8 @@
     "@schematics/angular:component": {
       "style": "scss"
     }
+  },
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
   }
 }

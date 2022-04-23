@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 
 @Directive({
-  // tslint:disable-next-line
+  // eslint-disable-next-line
   selector: '.psm__progress-bar',
 })
 export class PSMProgressBarDirective implements OnChanges {

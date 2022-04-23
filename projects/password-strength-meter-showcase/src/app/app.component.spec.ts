@@ -6,7 +6,7 @@ import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
 import { AppComponent } from './app.component';
 import { By } from '@angular/platform-browser';
 
-/* tslint:disable:no-string-literal */
+/* eslint-disable @typescript-eslint/dot-notation */
 describe('AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
