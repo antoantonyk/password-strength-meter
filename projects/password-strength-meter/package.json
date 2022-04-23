@@ -2,7 +2,7 @@
   "name": "angular-password-strength-meter",
   "version": "4.2.0",
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.4.0"
   },
   "peerDependencies": {
     "@angular/common": "~12.2.16",
