@@ -38,7 +38,7 @@
     "@zxcvbn-ts/core": "^2.0.1",
     "@zxcvbn-ts/language-en": "^2.0.1",
     "bootstrap": "^4.4.1",
-    "rxjs": "~6.5.5",
+    "rxjs": "~6.6.7",
     "tslib": "^2.4.0",
     "zone.js": "~0.11.4"
   },
