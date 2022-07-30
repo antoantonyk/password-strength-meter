@@ -1,6 +1,6 @@
 {
   "name": "password-strength-meter",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "scripts": {
     "ng": "ng",
     "serve": "ng serve",
