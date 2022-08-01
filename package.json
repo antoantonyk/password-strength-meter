@@ -50,7 +50,7 @@
     "@angular-eslint/schematics": "14.0.2",
     "@angular-eslint/template-parser": "14.0.2",
     "@angular/cli": "^14.1.0",
-    "@angular/compiler-cli": "^14.0.4",
+    "@angular/compiler-cli": "^14.1.0",
     "@angular/language-service": "^14.1.0",
     "@types/jasmine": "~4.0.3",
     "@types/jasminewd2": "~2.0.10",
