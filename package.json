@@ -36,7 +36,7 @@
     "@angular/platform-browser-dynamic": "^14.2.1",
     "@angular/router": "^14.2.1",
     "@zxcvbn-ts/core": "^2.0.5",
-    "@zxcvbn-ts/language-en": "^2.0.1",
+    "@zxcvbn-ts/language-en": "^2.1.0",
     "bootstrap": "^5.2.1",
     "rxjs": "~7.5.6",
     "tslib": "^2.4.0",
