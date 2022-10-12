@@ -34,7 +34,7 @@
     "@angular/forms": "^14.2.6",
     "@angular/platform-browser": "^14.2.5",
     "@angular/platform-browser-dynamic": "^14.2.6",
-    "@angular/router": "^14.2.5",
+    "@angular/router": "^14.2.6",
     "@zxcvbn-ts/core": "^2.0.5",
     "@zxcvbn-ts/language-en": "^2.1.0",
     "bootstrap": "^5.2.2",
