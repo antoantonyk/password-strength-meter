@@ -27,7 +27,7 @@
     "angular password strength meter"
   ],
   "dependencies": {
-    "@angular/animations": "^14.2.8",
+    "@angular/animations": "^14.2.10",
     "@angular/common": "^14.2.9",
     "@angular/compiler": "^14.2.9",
     "@angular/core": "^14.0.4",
