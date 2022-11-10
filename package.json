@@ -32,7 +32,7 @@
     "@angular/compiler": "^14.2.10",
     "@angular/core": "^14.0.4",
     "@angular/forms": "^14.2.9",
-    "@angular/platform-browser": "^14.2.9",
+    "@angular/platform-browser": "^14.2.10",
     "@angular/platform-browser-dynamic": "^14.2.10",
     "@angular/router": "^14.2.10",
     "@zxcvbn-ts/core": "^2.1.0",
