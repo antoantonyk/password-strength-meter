@@ -39,7 +39,7 @@
     "@zxcvbn-ts/language-en": "^2.1.0",
     "bootstrap": "^5.2.3",
     "rxjs": "~7.8.0",
-    "tslib": "^2.4.1",
+    "tslib": "^2.5.0",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {
