@@ -5,8 +5,8 @@
     "tslib": "^2.4.0"
   },
   "peerDependencies": {
-    "@angular/common": "^14.0.0",
-    "@angular/core": "^14.0.0",
+    "@angular/common": "^15.0.0",
+    "@angular/core": "^15.0.0",
     "@zxcvbn-ts/core": "^2.0.1",
     "@zxcvbn-ts/language-en": "^2.0.1"
   },
@@ -15,7 +15,7 @@
     "email": "antoantony8@gmail.com"
   },
   "keywords": [
-    "angular 14",
+    "angular 15",
     "password-strength",
     "password-strength-component",
     "password-strength-meter",
