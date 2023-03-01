@@ -4,18 +4,19 @@ import { zxcvbn, zxcvbnOptions } from '@zxcvbn-ts/core';
 import { PSMOptions, PSM_CONFIG } from './password-strength-meter.types';
 
 import zxcvbnEnPackage from '@zxcvbn-ts/language-en';
+import {
+  PasswordStrengthMeterModel,
+} from './password-strength-meter.model';
 
 export abstract class IPasswordStrengthMeterService {
   abstract score(password: string): number;
 
-  abstract scoreWithFeedback(password: string): {
-    score: number;
-    feedback: { warning: string; suggestions: string[] };
-  };
+  abstract scoreWithFeedback(password: string): Promise<PasswordStrengthMeterModel> | PasswordStrengthMeterModel;
+
 }
 
 export const DEFAULT_CONFIG: PSMOptions = {
-  translations: zxcvbnEnPackage.translations,
+  translations: zxcvbnEnPackage.translations
 };
 
 @Injectable()
@@ -55,11 +56,9 @@ export class PasswordStrengthMeterService extends IPasswordStrengthMeterService 
    *
    * @param password - Password
    */
-  scoreWithFeedback(password): {
-    score: number;
-    feedback: { suggestions: string[]; warning: string };
-  } {
+  scoreWithFeedback(password):  Promise<PasswordStrengthMeterModel> | PasswordStrengthMeterModel {
     const result = zxcvbn(password);
     return { score: result.score, feedback: result.feedback };
   }
+
 }

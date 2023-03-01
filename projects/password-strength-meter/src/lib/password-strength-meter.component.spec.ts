@@ -82,7 +82,7 @@ describe('PasswordStrengthMeterComponent', () => {
     expect(component.strengthChange.emit).toHaveBeenCalledWith(2);
   });
 
-  it('should not emit password strength on no strength chanage', () => {
+  it('should not emit password strength on no strength change', () => {
     spyOn(passwordStrengthMeterService, 'score').and.returnValue(2);
     spyOn(component.strengthChange, 'emit');
 
@@ -130,14 +130,4 @@ describe('PasswordStrengthMeterComponent', () => {
     expect(fixture.debugElement.query(By.css('.psm__suggestion'))).toBeTruthy();
   });
 
-  // it('should use the custom colors', () => {
-  //   component.colors = [
-  //     'darkred',
-  //     'orangered',
-  //     'purple',
-  //     'yellowgreen',
-  //     'green',
-  //   ];
-  //   expect(component.getMeterFillColor(2)).toEqual('purple');
-  // });
 });
