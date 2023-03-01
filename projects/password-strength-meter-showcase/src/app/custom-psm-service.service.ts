@@ -15,14 +15,4 @@ export class CustomPsmServiceService extends IPasswordStrengthMeterService {
     return { score: 1, feedback: { warning: '', suggestions: [] } };
   }
 
-  scoreWithFeedbackReactive(password: string): Promise<PasswordStrengthMeterModel> {
-    console.log('CustomPsmServiceService. Password: ', password);
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(
-          { score: 1, feedback: { warning: '', suggestions: [] } }
-        );
-      }, 300);
-    });
-  };
 }
