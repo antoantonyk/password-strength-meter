@@ -8,7 +8,8 @@ import {
   HostBinding,
 } from '@angular/core';
 
-import { IPasswordStrengthMeterService } from './password-strength-meter.service';
+import { IPasswordStrengthMeterService } from './password-strength-meter-service';
+
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector

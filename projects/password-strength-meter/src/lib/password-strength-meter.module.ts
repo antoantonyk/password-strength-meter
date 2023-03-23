@@ -3,18 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { PasswordStrengthMeterComponent } from './password-strength-meter.component';
 import { PSMProgressBarDirective } from './psm-progress-bar.directive';
-import {
-  IPasswordStrengthMeterService,
-  PasswordStrengthMeterService,
-} from './password-strength-meter.service';
-
-type PSMOptions = {
-  serviceClass: Type<IPasswordStrengthMeterService>;
-};
-
-const defaultOptions: PSMOptions = {
-  serviceClass: PasswordStrengthMeterService,
-};
+import { PSMOptions } from './psm-options';
+import { IPasswordStrengthMeterService } from './password-strength-meter-service';
 
 @NgModule({
   imports: [CommonModule],
@@ -24,7 +14,7 @@ const defaultOptions: PSMOptions = {
 export class PasswordStrengthMeterModule {
   static forRoot({
     serviceClass,
-  }: PSMOptions = defaultOptions): ModuleWithProviders<PasswordStrengthMeterModule> {
+  }: PSMOptions): ModuleWithProviders<PasswordStrengthMeterModule> {
     return {
       ngModule: PasswordStrengthMeterModule,
       providers: [

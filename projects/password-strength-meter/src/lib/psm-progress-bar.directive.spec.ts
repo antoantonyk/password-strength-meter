@@ -5,10 +5,17 @@ import { By } from '@angular/platform-browser';
 import { PasswordStrengthMeterComponent } from './password-strength-meter.component';
 import {
   IPasswordStrengthMeterService,
-  PasswordStrengthMeterService,
-} from './password-strength-meter.service';
+} from './password-strength-meter-service';
 import { PSMProgressBarDirective } from './psm-progress-bar.directive';
 
+class  PasswordStrengthMeterService implements IPasswordStrengthMeterService{
+  score(password: string): number {
+    return 1;
+  }
+  scoreWithFeedback(password: string): { score: number; feedback: { warning: string; suggestions: string[]; }; } {
+    return {score:1,feedback:{warning:'warning text',suggestions:['try entering a better password.']}}
+  }
+}
 describe('Directive: PasswordStrengthMeter - ProgressBar', () => {
   let component: PasswordStrengthMeterComponent;
   let fixture: ComponentFixture<PasswordStrengthMeterComponent>;

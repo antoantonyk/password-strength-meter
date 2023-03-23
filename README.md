@@ -29,20 +29,21 @@ Need lib for Vue.js? [Click here](https://github.com/antoantonyk/vue-password-st
 ```sh
 npm install @zxcvbn-ts/core @zxcvbn-ts/language-en angular-password-strength-meter --save
 ```
+**Optional Packages:** zxcvbn packagase are not required if PasswordStrengthMeterModule is using with a custom implementation of IPasswordStrengthMeterService .
 
 **Step 2:** Import Password Strength Meter Module into your app module
 
 ```ts
 ....
 import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
-
+import { DEFAULT_PSM_OPTIONS } from 'angular-password-strength-meter/zxcvbn';
 ....
 
 @NgModule({
     ...
     imports: [
         ....
-        PasswordStrengthMeterModule.forRoot()
+        PasswordStrengthMeterModule.forRoot(DEFAULT_PSM_OPTIONS)
     ],
     ....
 })
@@ -63,7 +64,8 @@ Refer to the [zxcvbn documentation](https://zxcvbn-ts.github.io/zxcvbn/guide/get
 
 ```ts
 ....
-import { PasswordStrengthMeterModule, PSM_CONFIG } from 'angular-password-strength-meter';
+import { PasswordStrengthMeterModule} from 'angular-password-strength-meter';
+import { DEFAULT_PSM_OPTIONS, ZXCVBN_CONFIG } from 'angular-password-strength-meter/zxcvbn';
 import zxcvbnCommonPackage from '@zxcvbn-ts/language-common'
 import zxcvbnEnPackage from '@zxcvbn-ts/language-en'
 
@@ -77,7 +79,7 @@ import zxcvbnEnPackage from '@zxcvbn-ts/language-en'
     ],
     providers: [
       {
-        provide: PSM_CONFIG,
+        provide: ZXCVBN_CONFIG,
         useValue: {
           translations: zxcvbnEnPackage.translations,
           graphs: zxcvbnCommonPackage.adjacencyGraphs,
