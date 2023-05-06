@@ -1,6 +1,6 @@
 {
   "name": "password-strength-meter",
-  "version": "5.1.0",
+  "version": "6.0.0",
   "scripts": {
     "ng": "ng",
     "serve": "ng serve",
@@ -19,7 +19,7 @@
     "postinstall": "ngcc"
   },
   "keywords": [
-    "angular 14",
+    "angular 15",
     "password-strength",
     "password-strength-component",
     "password-strength-meter",
