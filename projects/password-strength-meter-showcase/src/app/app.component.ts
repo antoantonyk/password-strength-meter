@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +7,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  userForm: FormGroup;
+  userForm: UntypedFormGroup;
 
   get fullName() {
     return this.userForm.get('fullName');
@@ -21,7 +21,7 @@ export class AppComponent {
     return this.userForm.get('password');
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: UntypedFormBuilder) {
     this.userForm = this.fb.group({
       fullName: ['', Validators.required],
       email: ['', [Validators.required, Validators.pattern('[^ @]*@[^ @]*')]],
