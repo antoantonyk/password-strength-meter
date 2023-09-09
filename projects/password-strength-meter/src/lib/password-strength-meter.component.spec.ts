@@ -9,7 +9,6 @@ import {
 } from './password-strength-meter.service';
 import { PSMProgressBarDirective } from './psm-progress-bar.directive';
 
-/* eslint-disable @typescript-eslint/dot-notation */
 describe('PasswordStrengthMeterComponent', () => {
   let component: PasswordStrengthMeterComponent;
   let fixture: ComponentFixture<PasswordStrengthMeterComponent>;
