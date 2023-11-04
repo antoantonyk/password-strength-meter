@@ -1,14 +1,14 @@
 {
   "name": "angular-password-strength-meter",
-  "version": "6.0.0",
+  "version": "7.0.0",
   "dependencies": {
     "tslib": "^2.5.0"
   },
   "peerDependencies": {
     "@angular/common": "^15.0.0",
     "@angular/core": "^15.0.0",
-    "@zxcvbn-ts/core": "^2.0.1",
-    "@zxcvbn-ts/language-en": "^2.0.1"
+    "@zxcvbn-ts/core": "^2.2.1",
+    "@zxcvbn-ts/language-en": "^2.1.0"
   },
   "author": {
     "name": "Anto Antony",
