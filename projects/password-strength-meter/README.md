@@ -27,7 +27,7 @@ Need lib for Vue.js? [Click here](https://github.com/antoantonyk/vue-password-st
 **Step 1:** npm install
 
 ```sh
-npm install @zxcvbn-ts/core@^2.2.1 @zxcvbn-ts/language-en@^2.1.0 angular-password-strength-meter --save
+npm install @zxcvbn-ts/core@^3.0.0 @zxcvbn-ts/language-en@^3.0.0 angular-password-strength-meter --save
 ```
 **Optional Packages:** zxcvbn packagase are not required if PasswordStrengthMeterModule is using with a custom implementation of IPasswordStrengthMeterService .
 
