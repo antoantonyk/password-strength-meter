@@ -4,18 +4,38 @@ import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { PasswordStrengthMeterComponent } from './password-strength-meter.component';
 import {
+  FeedbackResult,
   IPasswordStrengthMeterService,
 } from './password-strength-meter-service';
 import { PSMProgressBarDirective } from './psm-progress-bar.directive';
 
-class  PasswordStrengthMeterService implements IPasswordStrengthMeterService{
+class PasswordStrengthMeterService extends IPasswordStrengthMeterService {
   score(password: string): number {
     return 1;
   }
-  scoreWithFeedback(password: string): { score: number; feedback: { warning: string; suggestions: string[]; }; } {
-    return {score:1,feedback:{warning:'warning text',suggestions:['try entering a better password.']}}
+
+  scoreWithFeedback(password: string): {
+    score: number;
+    feedback: { warning: string; suggestions: string[] };
+  } {
+    return {
+      score: 1,
+      feedback: {
+        warning: 'warning text',
+        suggestions: ['try entering a better password.'],
+      },
+    };
+  }
+
+  scoreAsync(password: string): Promise<number> {
+    return Promise.resolve(this.score(password));
+  }
+
+  scoreWithFeedbackAsync(password: string): Promise<FeedbackResult> {
+    return Promise.resolve(this.scoreWithFeedback(password));
   }
 }
+
 describe('Directive: PasswordStrengthMeter - ProgressBar', () => {
   let component: PasswordStrengthMeterComponent;
   let fixture: ComponentFixture<PasswordStrengthMeterComponent>;
