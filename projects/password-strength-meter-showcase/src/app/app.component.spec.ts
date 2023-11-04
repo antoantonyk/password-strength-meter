@@ -2,6 +2,7 @@ import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
+import { DEFAULT_PSM_OPTIONS } from 'angular-password-strength-meter/zxcvbn';
 
 import { AppComponent } from './app.component';
 import { By } from '@angular/platform-browser';
@@ -13,7 +14,7 @@ describe('AppComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, PasswordStrengthMeterModule.forRoot()],
+      imports: [ReactiveFormsModule, PasswordStrengthMeterModule.forRoot(DEFAULT_PSM_OPTIONS)],
       declarations: [AppComponent],
     }).compileComponents();
 

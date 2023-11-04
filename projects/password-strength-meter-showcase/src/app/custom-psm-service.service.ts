@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IPasswordStrengthMeterService } from 'projects/password-strength-meter/src/public-api';
+import { IPasswordStrengthMeterService } from 'angular-password-strength-meter';
 
 @Injectable()
 export class CustomPsmServiceService extends IPasswordStrengthMeterService {

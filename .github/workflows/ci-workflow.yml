@@ -30,14 +30,21 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # TODO - find better approch to install the peer dependencies for local developement
+      - name: Link lib
+        run:  npm link ./projects/password-strength-meter
+
       - name: Lint
         run: npm run lint
+
+      - name: Build
+        run: npm run build:lib:prod
 
       - name: Unit Test - Lib
         run: npm run test:lib -- -- --watch=false --browsers=ChromeHeadless
 
       - name: Unit Test - App
-        run: npm run build:lib:prod && npm run test:app -- -- --watch=false --browsers=ChromeHeadless
+        run: npm run test:app -- -- --watch=false --browsers=ChromeHeadless
 
       - name: Coveralls
         uses: coverallsapp/github-action@1.1.3
@@ -66,6 +73,10 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      # TODO - find better approch to install the peer dependencies for local developement
+      - name: Link lib
+        run:  npm link ./projects/password-strength-meter
 
       - name: Build - Lib
         run: npm run build:lib:prod
@@ -101,6 +112,10 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      # TODO - find better approch to install the peer dependencies for local developement
+      - name: Link lib
+        run:  npm link ./projects/password-strength-meter
 
       - name: Build - Lib
         run: npm run build:lib:prod
