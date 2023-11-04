@@ -1,29 +1,20 @@
 import { Inject, Injectable, Optional } from '@angular/core';
-
 import { zxcvbn, zxcvbnOptions } from '@zxcvbn-ts/core';
-import { PSMOptions, PSM_CONFIG } from './password-strength-meter.types';
-
 import zxcvbnEnPackage from '@zxcvbn-ts/language-en';
+import { IPasswordStrengthMeterService } from 'angular-password-strength-meter';
+import { ZXCVBN_CONFIG, ZxvbnConfigType } from './password-strength-meter.types';
 
-export abstract class IPasswordStrengthMeterService {
-  abstract score(password: string): number;
 
-  abstract scoreWithFeedback(password: string): {
-    score: number;
-    feedback: { warning: string; suggestions: string[] };
-  };
-}
-
-export const DEFAULT_CONFIG: PSMOptions = {
+export const DEFAULT_CONFIG: ZxvbnConfigType = {
   translations: zxcvbnEnPackage.translations,
 };
 
 @Injectable()
-export class PasswordStrengthMeterService extends IPasswordStrengthMeterService {
+export class PasswordStrengthMeterZXCVBNService extends IPasswordStrengthMeterService {
   constructor(
     @Optional()
-    @Inject(PSM_CONFIG)
-    options: PSMOptions
+    @Inject(ZXCVBN_CONFIG)
+    options: ZxvbnConfigType
   ) {
     super();
 
