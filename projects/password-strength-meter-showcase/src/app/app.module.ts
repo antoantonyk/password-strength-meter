@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
 import { DEFAULT_PSM_OPTIONS } from 'angular-password-strength-meter/zxcvbn';
 
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
