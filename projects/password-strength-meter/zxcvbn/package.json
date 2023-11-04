@@ -1,11 +1,11 @@
 {
-    "ngPackage": {
-      "lib": {
-        "entryFile": "./public-api.ts"
-      }
-    },
-    "peerDependencies": {
-      "@zxcvbn-ts/core": "^2.0.1",
-      "@zxcvbn-ts/language-en": "^2.0.1"
+  "ngPackage": {
+    "lib": {
+      "entryFile": "./public-api.ts"
     }
+  },
+  "peerDependencies": {
+    "@zxcvbn-ts/core": "^2.2.1",
+    "@zxcvbn-ts/language-en": "^2.1.0"
   }
+}
