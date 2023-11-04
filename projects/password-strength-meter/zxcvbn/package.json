@@ -5,7 +5,7 @@
     }
   },
   "peerDependencies": {
-    "@zxcvbn-ts/core": "^2.2.1",
-    "@zxcvbn-ts/language-en": "^2.1.0"
+    "@zxcvbn-ts/core": "^3.0.0",
+    "@zxcvbn-ts/language-en": "^3.0.0"
   }
 }
