@@ -1,12 +1,12 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 import { zxcvbn, zxcvbnOptions } from '@zxcvbn-ts/core';
-import zxcvbnEnPackage from '@zxcvbn-ts/language-en';
+import { translations } from '@zxcvbn-ts/language-en'
 import { IPasswordStrengthMeterService } from 'angular-password-strength-meter';
 import { ZXCVBN_CONFIG, ZxvbnConfigType } from './password-strength-meter.types';
 
 
 export const DEFAULT_CONFIG: ZxvbnConfigType = {
-  translations: zxcvbnEnPackage.translations,
+  translations: translations,
 };
 
 @Injectable()
