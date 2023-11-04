@@ -124,7 +124,7 @@
     "password-strength-meter": {
       "projectType": "library",
       "root": "projects/password-strength-meter",
-      "sourceRoot": "projects/password-strength-meter/src",
+      "sourceRoot": "projects/password-strength-meter",
       "prefix": "lib",
       "architect": {
         "build": {
