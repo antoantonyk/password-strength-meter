@@ -29,6 +29,7 @@ Need lib for Vue.js? [Click here](https://github.com/antoantonyk/vue-password-st
 ```sh
 npm install @zxcvbn-ts/core@^3.0.0 @zxcvbn-ts/language-en@^3.0.0 angular-password-strength-meter --save
 ```
+
 **Optional Packages:** zxcvbn packagase are not required if PasswordStrengthMeterModule is using with a custom implementation of IPasswordStrengthMeterService .
 
 **Step 2:** Import Password Strength Meter Module into your app module
@@ -97,7 +98,7 @@ export class AppModule { }
 
 ## Use custom password strength meter service
 
-You can override the default password strength meter service by providing the Custom Service class as follows.
+You can override the default password strength meter service by providing the [Custom Service class](./projects/password-strength-meter-showcase/src/app/custom-psm-service.service.ts) as follows.
 
 ```ts
 ....
@@ -117,6 +118,16 @@ export class CustomPsmServiceService extends IPasswordStrengthMeterService {
   } {
     // TODO - return score with feedback
     return { score: 1, feedback: { warning: '', suggestions: [] } };
+  }
+
+   scoreAsync(password: string): Promise<number> {
+    // TODO - do some async operation
+    return new Promise();
+  }
+
+  scoreWithFeedbackAsync(password: string): Promise<FeedbackResult> {
+    // TODO - do some async operation
+    return new Promise();
   }
 }
 ....
@@ -145,5 +156,6 @@ export class AppModule { }
 | minPasswordLength        | Input()  |  number  |                             8                              | min length of password to calculate the strength                                                                                                                                                                     |
 | enableFeedback           | Input()  | boolean  |                           false                            | to show/hide the suggestions and warning messages                                                                                                                                                                    |
 | numberOfProgressBarItems | Input()  |  number  |                             5                              | change the number to update the number of progress bar items                                                                                                                                                         |
+| enableAsync              | Input()  | boolean  |                           false                            | to do the score calculation in async mode                                                                                                                                                                            |
 | colors                   | Input()  | string[] | ['darkred', 'orangered', 'orange', 'yellowgreen', 'green'] | to overide the meter colors, password strength range is 0 - 4, for strength 0 equals first color in the array and so on. <br /><br />Note - length of the colors array should match the number of progress bar items |
 | strengthChange           | Output() |  number  |                             -                              | emits the strength of the provided password in number -> range 0 - 4                                                                                                                                                 |

@@ -1,4 +1,4 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed, fakeAsync, inject } from '@angular/core/testing';
 
 import { PasswordStrengthMeterZXCVBNService } from './password-strength-meter-zxcvbn.service';
 import { zxcvbnOptions } from '@zxcvbn-ts/core';
@@ -41,6 +41,24 @@ describe('PasswordStrengthMeterService', () => {
       expect(Object.keys(result)).toContain('score');
       expect(Object.keys(result)).toContain('feedback');
     }
+  ));
+
+  it('should return a number as score when called with async', inject(
+    [PasswordStrengthMeterZXCVBNService],
+    fakeAsync((service: PasswordStrengthMeterZXCVBNService) => {
+      expectAsync(service.scoreAsync('aarasddasdsad')).toBeResolvedTo(
+        jasmine.any(Number)
+      );
+    })
+  ));
+
+  it('should return a score and feedback when called with async', inject(
+    [PasswordStrengthMeterZXCVBNService],
+    fakeAsync((service: PasswordStrengthMeterZXCVBNService) => {
+      expectAsync(
+        service.scoreWithFeedbackAsync('aarasddasdsad')
+      ).toBeResolvedTo(jasmine.any(Object));
+    })
   ));
 });
 

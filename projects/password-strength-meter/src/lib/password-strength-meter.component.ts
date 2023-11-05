@@ -6,20 +6,39 @@ import {
   Output,
   EventEmitter,
   HostBinding,
+  OnInit,
+  OnDestroy,
 } from '@angular/core';
-import { IPasswordStrengthMeterService } from './password-strength-meter-service';
+import {
+  Subject,
+  debounceTime,
+  distinctUntilChanged,
+  of,
+  switchMap,
+  takeUntil,
+} from 'rxjs';
+
+import {
+  FeedbackResult,
+  IPasswordStrengthMeterService,
+} from './password-strength-meter-service';
+
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'password-strength-meter',
   templateUrl: './password-strength-meter.component.html',
   styleUrls: ['./password-strength-meter.component.scss'],
 })
-export class PasswordStrengthMeterComponent implements OnChanges {
+export class PasswordStrengthMeterComponent
+  implements OnInit, OnChanges, OnDestroy
+{
   @Input() password: string;
 
   @Input() minPasswordLength = 8;
 
   @Input() enableFeedback = false;
+
+  @Input() enableAsync = false;
 
   @Input() colors: string[] = [];
 
@@ -34,44 +53,82 @@ export class PasswordStrengthMeterComponent implements OnChanges {
   feedback: { suggestions: string[]; warning: string } = null;
 
   private prevPasswordStrength = null;
+  private passwordChangeObservable$ = new Subject<string>();
+  private destroyed$ = new Subject<void>();
 
   constructor(
     private passwordStrengthMeterService: IPasswordStrengthMeterService
   ) {}
 
+  ngOnInit(): void {
+    this.passwordChangeObservable$
+      .pipe(
+        distinctUntilChanged(),
+        debounceTime(100),
+        switchMap((value) => {
+          if (!value) {
+            return of({ score: null, feedback: null });
+          }
+
+          if (value && value.length < this.minPasswordLength) {
+            return of({ score: 0, feedback: null });
+          }
+
+          if (this.enableAsync) {
+            return this.calculateScoreAsync(value);
+          }
+
+          const result = this.calculateScore(value);
+          return of(result);
+        }),
+        takeUntil(this.destroyed$)
+      )
+      .subscribe((result: FeedbackResult) => {
+        this.passwordStrength = result.score;
+        this.feedback = result.feedback;
+
+        // Only emit the passwordStrength if it changed
+        if (this.prevPasswordStrength !== this.passwordStrength) {
+          this.strengthChange.emit(this.passwordStrength);
+          this.prevPasswordStrength = this.passwordStrength;
+        }
+      });
+  }
+
   ngOnChanges(changes: SimpleChanges) {
     if (changes.password) {
-      this.calculatePasswordStrength();
+      this.passwordChangeObservable$.next(this.password);
     }
   }
 
-  private calculatePasswordStrength() {
-    // TODO validation logic optimization
-    if (!this.password) {
-      this.passwordStrength = null;
-      this.feedback = null;
-    } else if (this.password && this.password.length < this.minPasswordLength) {
-      this.passwordStrength = 0;
-      this.feedback = null;
-    } else {
-      if (this.enableFeedback) {
-        const result = this.passwordStrengthMeterService.scoreWithFeedback(
-          this.password
-        );
-        this.passwordStrength = result.score;
-        this.feedback = result.feedback;
-      } else {
-        this.passwordStrength = this.passwordStrengthMeterService.score(
-          this.password
-        );
-        this.feedback = null;
-      }
+  ngOnDestroy(): void {
+    this.destroyed$.next();
+    this.destroyed$.complete();
+  }
+
+  private calculateScore(value: string): FeedbackResult {
+    if (this.enableFeedback) {
+      return this.passwordStrengthMeterService.scoreWithFeedback(value);
     }
 
-    // Only emit the passwordStrength if it changed
-    if (this.prevPasswordStrength !== this.passwordStrength) {
-      this.strengthChange.emit(this.passwordStrength);
-      this.prevPasswordStrength = this.passwordStrength;
+    const feedbackResult = {
+      score: this.passwordStrengthMeterService.score(value),
+      feedback: null,
+    };
+
+    return feedbackResult;
+  }
+
+  private calculateScoreAsync(value: string): Promise<FeedbackResult> {
+    if (this.enableFeedback) {
+      return this.passwordStrengthMeterService.scoreWithFeedbackAsync(value);
     }
+
+    return this.passwordStrengthMeterService
+      .scoreAsync(value)
+      .then((result) => ({
+        score: result,
+        feedback: null,
+      }));
   }
 }

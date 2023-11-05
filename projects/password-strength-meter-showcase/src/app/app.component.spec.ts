@@ -1,11 +1,29 @@
 import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-
-import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
-import { DEFAULT_PSM_OPTIONS } from 'angular-password-strength-meter/zxcvbn';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { By } from '@angular/platform-browser';
+
+@Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'password-strength-meter',
+  template: '<div>PSM</div>',
+})
+class MockPasswordStrengthMeterComponent {
+  @Input() password: string;
+
+  @Input() minPasswordLength = 8;
+
+  @Input() enableFeedback = false;
+
+  @Input() enableAsync = false;
+
+  @Input() colors: string[] = [];
+
+  @Input() numberOfProgressBarItems = 5;
+
+  @Output() strengthChange = new EventEmitter<number>();
+}
 
 /* eslint-disable @typescript-eslint/dot-notation */
 describe('AppComponent', () => {
@@ -14,8 +32,8 @@ describe('AppComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, PasswordStrengthMeterModule.forRoot(DEFAULT_PSM_OPTIONS)],
-      declarations: [AppComponent],
+      imports: [ReactiveFormsModule],
+      declarations: [AppComponent, MockPasswordStrengthMeterComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AppComponent);
@@ -73,28 +91,21 @@ describe('AppComponent', () => {
       fixture.detectChanges();
       let errors = {};
       const password = component.userForm.controls['password'];
-      const passwordStrengthMeter = fixture.debugElement.query(
-        By.css('.psm__progress-bar')
-      );
 
       // Email field is required
       errors = password.errors || {};
       expect(errors['required']).toBeTruthy();
-      expect(passwordStrengthMeter.properties['data-strength']).toBeUndefined();
 
       password.setValue('simple');
       fixture.detectChanges();
       errors = password.errors || {};
-      expect(passwordStrengthMeter.attributes['data-strength']).toEqual('0');
+
       expect(errors['required']).toBeFalsy();
-      expect(component.onPasswordStrengthChanged).toHaveBeenCalled();
 
       password.setValue('hardToFigureOut123');
       fixture.detectChanges();
       errors = password.errors || {};
-      expect(passwordStrengthMeter.attributes['data-strength']).toEqual('4');
       expect(errors['required']).toBeFalsy();
-      expect(component.onPasswordStrengthChanged).toHaveBeenCalled();
     });
 
     it('should able to submit the form', () => {
