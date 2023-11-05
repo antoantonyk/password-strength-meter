@@ -1,6 +1,6 @@
 {
   "name": "password-strength-meter",
-  "version": "8.1.0",
+  "version": "9.0.0",
   "scripts": {
     "ng": "ng",
     "serve": "ng serve",
@@ -18,7 +18,7 @@
     "e2e": "ng e2e"
   },
   "keywords": [
-    "angular 15",
+    "angular 16",
     "password-strength",
     "password-strength-component",
     "password-strength-meter",

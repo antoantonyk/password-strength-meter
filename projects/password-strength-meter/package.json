@@ -1,6 +1,6 @@
 {
   "name": "angular-password-strength-meter",
-  "version": "8.1.0",
+  "version": "9.0.0",
   "dependencies": {
     "tslib": "^2.5.0"
   },
@@ -15,7 +15,7 @@
     "email": "antoantony8@gmail.com"
   },
   "keywords": [
-    "angular 15",
+    "angular 16",
     "password-strength",
     "password-strength-component",
     "password-strength-meter",
