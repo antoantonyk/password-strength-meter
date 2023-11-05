@@ -25,7 +25,6 @@ class MockPasswordStrengthMeterComponent {
   @Output() strengthChange = new EventEmitter<number>();
 }
 
-/* eslint-disable @typescript-eslint/dot-notation */
 describe('AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
