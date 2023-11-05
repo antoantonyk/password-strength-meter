@@ -7,15 +7,16 @@ import {
   EventEmitter,
   HostBinding,
   OnInit,
-  OnDestroy,
+  inject,
+  DestroyRef,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   Subject,
   debounceTime,
   distinctUntilChanged,
   of,
   switchMap,
-  takeUntil,
 } from 'rxjs';
 
 import {
@@ -29,9 +30,9 @@ import {
   templateUrl: './password-strength-meter.component.html',
   styleUrls: ['./password-strength-meter.component.scss'],
 })
-export class PasswordStrengthMeterComponent
-  implements OnInit, OnChanges, OnDestroy
-{
+export class PasswordStrengthMeterComponent implements OnInit, OnChanges {
+  private destroyRef = inject(DestroyRef);
+
   @Input() password: string;
 
   @Input() minPasswordLength = 8;
@@ -54,7 +55,6 @@ export class PasswordStrengthMeterComponent
 
   private prevPasswordStrength = null;
   private passwordChangeObservable$ = new Subject<string>();
-  private destroyed$ = new Subject<void>();
 
   constructor(
     private passwordStrengthMeterService: IPasswordStrengthMeterService
@@ -81,7 +81,7 @@ export class PasswordStrengthMeterComponent
           const result = this.calculateScore(value);
           return of(result);
         }),
-        takeUntil(this.destroyed$)
+        takeUntilDestroyed(this.destroyRef)
       )
       .subscribe((result: FeedbackResult) => {
         this.passwordStrength = result.score;
@@ -99,11 +99,6 @@ export class PasswordStrengthMeterComponent
     if (changes.password) {
       this.passwordChangeObservable$.next(this.password);
     }
-  }
-
-  ngOnDestroy(): void {
-    this.destroyed$.next();
-    this.destroyed$.complete();
   }
 
   private calculateScore(value: string): FeedbackResult {
