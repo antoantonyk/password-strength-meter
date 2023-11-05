@@ -15,8 +15,7 @@
     "test:lib": "npm run test password-strength-meter",
     "test:app": "npm run test password-strength-meter-showcase",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "postinstall": "ngcc"
+    "e2e": "ng e2e"
   },
   "keywords": [
     "angular 15",
