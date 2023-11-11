@@ -29,7 +29,7 @@ import {
   styleUrls: ['./password-strength-meter.component.scss'],
 })
 export class PasswordStrengthMeterComponent implements OnChanges {
-  @Input() password: string = '';
+  @Input({ required: true }) password: string = '';
 
   @Input() minPasswordLength = 8;
 
