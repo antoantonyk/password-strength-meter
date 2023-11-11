@@ -5,89 +5,24 @@
   "projects": {
     "password-strength-meter-showcase": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "projects/password-strength-meter-showcase",
       "sourceRoot": "projects/password-strength-meter-showcase/src",
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/password-strength-meter-showcase",
             "index": "projects/password-strength-meter-showcase/src/index.html",
-            "main": "projects/password-strength-meter-showcase/src/main.ts",
-            "polyfills": "projects/password-strength-meter-showcase/src/polyfills.ts",
+            "browser": "projects/password-strength-meter-showcase/src/main.ts",
+            "polyfills": ["zone.js"],
             "tsConfig": "projects/password-strength-meter-showcase/tsconfig.app.json",
-            "assets": [
-              "projects/password-strength-meter-showcase/src/favicon.ico",
-              "projects/password-strength-meter-showcase/src/assets"
-            ],
-            "styles": [
-              "projects/password-strength-meter-showcase/src/styles.scss"
-            ],
-            "scripts": [],
-            "vendorChunk": true,
-            "extractLicenses": false,
-            "buildOptimizer": false,
-            "sourceMap": true,
-            "optimization": false,
-            "namedChunks": true
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "projects/password-strength-meter-showcase/src/environments/environment.ts",
-                  "with": "projects/password-strength-meter-showcase/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
-            }
-          },
-          "defaultConfiguration": ""
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "password-strength-meter-showcase:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "password-strength-meter-showcase:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "password-strength-meter-showcase:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/password-strength-meter-showcase/src/test.ts",
-            "polyfills": "projects/password-strength-meter-showcase/src/polyfills.ts",
-            "tsConfig": "projects/password-strength-meter-showcase/tsconfig.spec.json",
-            "karmaConfig": "projects/password-strength-meter-showcase/karma.conf.js",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "projects/password-strength-meter-showcase/src/favicon.ico",
               "projects/password-strength-meter-showcase/src/assets"
@@ -96,18 +31,63 @@
               "projects/password-strength-meter-showcase/src/styles.scss"
             ],
             "scripts": []
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "projects/password-strength-meter-showcase/e2e/protractor.conf.js",
-            "devServerTarget": "password-strength-meter-showcase:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "password-strength-meter-showcase:serve:production"
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
             }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "password-strength-meter-showcase:build:production"
+            },
+            "development": {
+              "buildTarget": "password-strength-meter-showcase:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "password-strength-meter-showcase:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/password-strength-meter-showcase/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/password-strength-meter-showcase/src/favicon.ico",
+              "projects/password-strength-meter-showcase/src/assets"
+            ],
+            "styles": [
+              "projects/password-strength-meter-showcase/src/styles.scss"
+            ],
+            "scripts": []
           }
         },
         "lint": {
@@ -124,28 +104,30 @@
     "password-strength-meter": {
       "projectType": "library",
       "root": "projects/password-strength-meter",
-      "sourceRoot": "projects/password-strength-meter",
+      "sourceRoot": "projects/password-strength-meter/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "tsConfig": "projects/password-strength-meter/tsconfig.lib.json",
             "project": "projects/password-strength-meter/ng-package.json"
           },
           "configurations": {
             "production": {
               "tsConfig": "projects/password-strength-meter/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/password-strength-meter/tsconfig.lib.json"
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/password-strength-meter/src/test.ts",
+            "karmaConfig": "projects/password-strength-meter-showcase/karma.conf.js",
             "tsConfig": "projects/password-strength-meter/tsconfig.spec.json",
-            "karmaConfig": "projects/password-strength-meter/karma.conf.js",
-            "codeCoverage": true
+            "polyfills": ["zone.js", "zone.js/testing"]
           }
         },
         "lint": {
@@ -166,9 +148,7 @@
     }
   },
   "cli": {
-    "schematicCollections": [
-      "@angular-eslint/schematics"
-    ],
+    "schematicCollections": ["@angular-eslint/schematics"],
     "analytics": false
   }
 }

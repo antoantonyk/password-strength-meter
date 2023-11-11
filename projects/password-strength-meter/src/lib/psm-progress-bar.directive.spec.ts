@@ -8,11 +8,13 @@ import {
 import { PSMProgressBarDirective } from './psm-progress-bar.directive';
 
 class PasswordStrengthMeterService extends IPasswordStrengthMeterService {
-  score(password: string): number {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  score(_: string): number {
     return 1;
   }
 
-  scoreWithFeedback(password: string): {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  scoreWithFeedback(_: string): {
     score: number;
     feedback: { warning: string; suggestions: string[] };
   } {
@@ -61,7 +63,7 @@ describe('Directive: PasswordStrengthMeter - ProgressBar', () => {
     );
 
     expect(items.length).toEqual(5);
-    expect(items[0].styles.width).toEqual(`${100 / 5}%`);
+    expect(items[0].styles['width']).toEqual(`${100 / 5}%`);
   });
 
   it('should create progress bar items with provided value', () => {
@@ -75,7 +77,7 @@ describe('Directive: PasswordStrengthMeter - ProgressBar', () => {
     );
 
     expect(items.length).toEqual(3);
-    expect(items[0].styles.width).toEqual(`33.3333%`);
+    expect(items[0].styles['width']).toEqual(`33.3333%`);
   });
 
   it('should update the aria attributes', () => {

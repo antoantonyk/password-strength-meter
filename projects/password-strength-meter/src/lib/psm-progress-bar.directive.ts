@@ -14,10 +14,10 @@ import {
 })
 export class PSMProgressBarDirective implements OnChanges {
   @Input()
-  numberOfProgressBarItems: number;
+  numberOfProgressBarItems: number = 0;
 
   @Input()
-  passwordStrength: number;
+  passwordStrength: number = 0;
 
   @Input()
   colors: string[] = [];
@@ -48,7 +48,7 @@ export class PSMProgressBarDirective implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.numberOfProgressBarItems) {
+    if (changes['numberOfProgressBarItems']) {
       this.setProgressBarItems();
     }
 
@@ -61,13 +61,13 @@ export class PSMProgressBarDirective implements OnChanges {
     );
     const width = 100 / this.numberOfProgressBarItems;
 
-    progressBarItemContainer.childNodes.forEach((item) => {
+    progressBarItemContainer?.childNodes.forEach((item) => {
       this.renderer.removeChild(progressBarItemContainer, item);
     });
 
     Array(this.numberOfProgressBarItems)
       .fill(1)
-      .forEach((_) => {
+      .forEach(() => {
         const progressBarItem = this.renderer.createElement('div');
         this.renderer.addClass(progressBarItem, 'psm__progress-bar-item');
         this.renderer.setStyle(progressBarItem, 'width', `${width}%`);

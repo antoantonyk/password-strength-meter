@@ -6,7 +6,6 @@ import {
   Output,
   EventEmitter,
   HostBinding,
-  OnInit,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
@@ -29,7 +28,7 @@ import {
   styleUrls: ['./password-strength-meter.component.scss'],
 })
 export class PasswordStrengthMeterComponent implements OnChanges {
-  @Input() password: string;
+  @Input() password: string = '';
 
   @Input() minPasswordLength = 8;
 
@@ -41,15 +40,15 @@ export class PasswordStrengthMeterComponent implements OnChanges {
 
   @Input() numberOfProgressBarItems = 5;
 
-  @Output() strengthChange = new EventEmitter<number>();
+  @Output() strengthChange = new EventEmitter<number | null>();
 
   @HostBinding('class') baseClass = 'psm';
 
-  passwordStrength: number = null;
+  passwordStrength: number | null = null;
 
-  feedback: { suggestions: string[]; warning: string } = null;
+  feedback: { suggestions: string[]; warning: string | null } | null = null;
 
-  private prevPasswordStrength = null;
+  private prevPasswordStrength: number | null = null;
   private passwordChangeObservable$ = new Subject<string>();
 
   constructor(
@@ -59,7 +58,7 @@ export class PasswordStrengthMeterComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.password) {
+    if (changes['password']) {
       this.passwordChangeObservable$.next(this.password);
     }
   }

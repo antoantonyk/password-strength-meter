@@ -21,7 +21,7 @@
       id="inputFullName"
       class="form-control"
       [ngClass]="{
-        'is-invalid': fullName.invalid && (fullName.dirty || fullName.touched)
+        'is-invalid': fullName?.invalid && (fullName?.dirty || fullName?.touched)
       }"
       placeholder="Full name"
       formControlName="fullName"
@@ -37,7 +37,7 @@
       id="inputEmail"
       class="form-control"
       [ngClass]="{
-        'is-invalid': email.invalid && (email.dirty || email.touched)
+        'is-invalid': email?.invalid && (email?.dirty || email?.touched)
       }"
       placeholder="Email address"
       formControlName="email"
@@ -53,7 +53,7 @@
       id="inputPassword"
       class="form-control"
       [ngClass]="{
-        'is-invalid': password.invalid && (password.dirty || password.touched)
+        'is-invalid': password?.invalid && (password?.dirty || password?.touched)
       }"
       placeholder="Password"
       aria-describedby="passwordHelpBlock"
@@ -62,7 +62,7 @@
     />
     <label for="inputPassword">Password</label>
     <password-strength-meter
-      [password]="password.value"
+      [password]="password?.value"
       [numberOfProgressBarItems]="5"
       [enableFeedback]="true"
       (strengthChange)="onPasswordStrengthChanged($event)"

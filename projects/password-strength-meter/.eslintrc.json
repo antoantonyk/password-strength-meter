@@ -8,13 +8,6 @@
       "files": [
         "*.ts"
       ],
-      "parserOptions": {
-        "project": [
-          "projects/password-strength-meter/tsconfig.lib.json",
-          "projects/password-strength-meter/tsconfig.spec.json"
-        ],
-        "createDefaultProgram": true
-      },
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
