@@ -1,6 +1,11 @@
 export interface FeedbackResult {
   score: number | null;
-  feedback: { warning: string | null; suggestions: string[] } | null;
+  feedback: Feedback | null;
+}
+
+export interface Feedback {
+  warning: string | null;
+  suggestions: string[];
 }
 
 export abstract class IPasswordStrengthMeterService {

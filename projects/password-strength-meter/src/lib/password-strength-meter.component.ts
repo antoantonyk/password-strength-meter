@@ -17,6 +17,7 @@ import {
 } from 'rxjs';
 
 import {
+  Feedback,
   FeedbackResult,
   IPasswordStrengthMeterService,
 } from './password-strength-meter-service';
@@ -46,7 +47,7 @@ export class PasswordStrengthMeterComponent implements OnChanges {
 
   passwordStrength: number | null = null;
 
-  feedback: { suggestions: string[]; warning: string | null } | null = null;
+  feedback: Feedback | null = null;
 
   private prevPasswordStrength: number | null = null;
   private passwordChangeObservable$ = new Subject<string>();

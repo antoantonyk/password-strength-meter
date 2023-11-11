@@ -118,10 +118,7 @@ export class CustomPsmServiceService extends IPasswordStrengthMeterService {
     return 1;
   }
 
-  scoreWithFeedback(password: string): {
-    score: number;
-    feedback: { warning: string; suggestions: string[] };
-  } {
+  scoreWithFeedback(password: string): FeedbackResult {
     // TODO - return score with feedback
     return { score: 1, feedback: { warning: '', suggestions: [] } };
   }

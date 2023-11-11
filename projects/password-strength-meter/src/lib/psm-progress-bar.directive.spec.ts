@@ -14,10 +14,7 @@ class PasswordStrengthMeterService extends IPasswordStrengthMeterService {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  scoreWithFeedback(_: string): {
-    score: number;
-    feedback: { warning: string; suggestions: string[] };
-  } {
+  scoreWithFeedback(_: string): FeedbackResult {
     return {
       score: 1,
       feedback: {

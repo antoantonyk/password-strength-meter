@@ -47,7 +47,7 @@ export class PasswordStrengthMeterZXCVBNService extends IPasswordStrengthMeterSe
 
   /**
    * this will return the password strength score with feedback messages
-   * return type { score: number; feedback: { suggestions: string[]; warning: string } }
+   * return type FeedbackResult
    *
    * @param password - Password
    */
