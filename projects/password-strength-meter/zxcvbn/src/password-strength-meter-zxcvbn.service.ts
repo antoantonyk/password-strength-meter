@@ -40,21 +40,18 @@ export class PasswordStrengthMeterZXCVBNService extends IPasswordStrengthMeterSe
    *
    *  @param password - Password
    */
-  score(password): number {
+  score(password: string): number {
     const result = zxcvbn(password);
     return result.score;
   }
 
   /**
    * this will return the password strength score with feedback messages
-   * return type { score: number; feedback: { suggestions: string[]; warning: string } }
+   * return type FeedbackResult
    *
    * @param password - Password
    */
-  scoreWithFeedback(password): {
-    score: number;
-    feedback: { suggestions: string[]; warning: string };
-  } {
+  scoreWithFeedback(password: string): FeedbackResult {
     const result = zxcvbn(password);
     return { score: result.score, feedback: result.feedback };
   }

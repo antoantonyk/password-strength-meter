@@ -1,4 +1,4 @@
-import { ModuleWithProviders, NgModule, Type } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PasswordStrengthMeterComponent } from './password-strength-meter.component';

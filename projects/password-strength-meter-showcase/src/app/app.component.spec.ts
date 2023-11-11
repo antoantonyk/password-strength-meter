@@ -1,5 +1,5 @@
 import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, ValidationErrors } from '@angular/forms';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
   template: '<div>PSM</div>',
 })
 class MockPasswordStrengthMeterComponent {
-  @Input() password: string;
+  @Input() password: string = '';
 
   @Input() minPasswordLength = 8;
 
@@ -49,7 +49,7 @@ describe('AppComponent', () => {
     });
 
     it('fullname field validity', () => {
-      let errors = {};
+      let errors: ValidationErrors = {};
       const fullName = component.userForm.controls['fullName'];
       expect(fullName.valid).toBeFalsy();
 
@@ -64,7 +64,7 @@ describe('AppComponent', () => {
     });
 
     it('email field validity', () => {
-      let errors = {};
+      let errors: ValidationErrors = {};
       const email = component.userForm.controls['email'];
       expect(email.valid).toBeFalsy();
 
@@ -88,7 +88,7 @@ describe('AppComponent', () => {
     it('password field validity', () => {
       spyOn(component, 'onPasswordStrengthChanged');
       fixture.detectChanges();
-      let errors = {};
+      let errors: ValidationErrors = {};
       const password = component.userForm.controls['password'];
 
       // Email field is required

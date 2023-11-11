@@ -13,11 +13,11 @@ import {
   selector: '.psm__progress-bar',
 })
 export class PSMProgressBarDirective implements OnChanges {
-  @Input()
-  numberOfProgressBarItems: number;
+  @Input({ required: true })
+  numberOfProgressBarItems: number = 5;
 
-  @Input()
-  passwordStrength: number;
+  @Input({ required: true })
+  passwordStrength: number | null = null;
 
   @Input()
   colors: string[] = [];
@@ -47,27 +47,27 @@ export class PSMProgressBarDirective implements OnChanges {
     this.progressBar = this.el.nativeElement;
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.numberOfProgressBarItems) {
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['numberOfProgressBarItems']) {
       this.setProgressBarItems();
     }
 
     this.setProgressBar();
   }
 
-  setProgressBarItems() {
+  setProgressBarItems(): void {
     const progressBarItemContainer = this.progressBar.querySelector(
       '.psm__progress-bar-items'
     );
-    const width = 100 / this.numberOfProgressBarItems;
+    const width = 100 / this.numberOfProgressBarItems!;
 
-    progressBarItemContainer.childNodes.forEach((item) => {
+    progressBarItemContainer?.childNodes.forEach((item) => {
       this.renderer.removeChild(progressBarItemContainer, item);
     });
 
     Array(this.numberOfProgressBarItems)
       .fill(1)
-      .forEach((_) => {
+      .forEach(() => {
         const progressBarItem = this.renderer.createElement('div');
         this.renderer.addClass(progressBarItem, 'psm__progress-bar-item');
         this.renderer.setStyle(progressBarItem, 'width', `${width}%`);
@@ -75,7 +75,7 @@ export class PSMProgressBarDirective implements OnChanges {
       });
   }
 
-  setProgressBar() {
+  setProgressBar(): void {
     const progressBarOverlayWidth = this.getFillMeterWidth(
       this.passwordStrength
     );
@@ -109,7 +109,7 @@ export class PSMProgressBarDirective implements OnChanges {
     }
   }
 
-  getFillMeterWidth(strength: number): number {
+  getFillMeterWidth(strength: number | null | undefined): number {
     if (strength === null || strength === undefined) {
       return 0;
     }
@@ -124,7 +124,7 @@ export class PSMProgressBarDirective implements OnChanges {
     return roundedStrengthInPercentage;
   }
 
-  getMeterFillColor(progressLevel: number) {
+  getMeterFillColor(progressLevel: number): string {
     if (
       !progressLevel ||
       progressLevel <= 0 ||

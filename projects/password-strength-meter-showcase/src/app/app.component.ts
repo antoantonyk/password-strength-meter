@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import {
+  UntypedFormGroup,
+  UntypedFormBuilder,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +33,7 @@ export class AppComponent {
     });
   }
 
-  onPasswordStrengthChanged(strength) {
+  onPasswordStrengthChanged(strength: number | null) {
     console.log('====================================');
     console.log('onPasswordStrengthChanged', strength);
     console.log('====================================');
@@ -45,7 +49,7 @@ export class AppComponent {
       console.log('Invalid Form');
       console.log('====================================');
       Object.keys(this.userForm.controls).forEach((key) => {
-        this.userForm.get(key).markAsDirty();
+        this.userForm.get(key)?.markAsDirty();
       });
     }
   }
