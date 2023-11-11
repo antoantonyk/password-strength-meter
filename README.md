@@ -21,7 +21,7 @@ Need lib for Vue.js? [Click here](https://github.com/antoantonyk/vue-password-st
 ```html
 <password-strength-meter [password]="password"></password-strength-meter>
 ```
-
+[stackblitz](https://stackblitz.com/edit/stackblitz-starters-tz9tse?file=src%2Fmain.ts)
 ## Get Started
 
 **Step 1:** npm install (For Angular v17)
