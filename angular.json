@@ -87,7 +87,8 @@
             "styles": [
               "projects/password-strength-meter-showcase/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "codeCoverage": true
           }
         },
         "lint": {
@@ -125,9 +126,10 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "karmaConfig": "projects/password-strength-meter-showcase/karma.conf.js",
+            "karmaConfig": "projects/password-strength-meter/karma.conf.js",
             "tsConfig": "projects/password-strength-meter/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "codeCoverage": true
           }
         },
         "lint": {
