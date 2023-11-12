@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/component-selector */
 import {
   Component,
   Input,
@@ -6,6 +7,8 @@ import {
   Output,
   EventEmitter,
   HostBinding,
+  inject,
+  booleanAttribute,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
@@ -21,21 +24,23 @@ import {
   FeedbackResult,
   IPasswordStrengthMeterService,
 } from './password-strength-meter-service';
+import { PSMProgressBarDirective } from './psm-progress-bar.directive';
 
 @Component({
-  // eslint-disable-next-line @angular-eslint/component-selector
+  standalone: true,
   selector: 'password-strength-meter',
   templateUrl: './password-strength-meter.component.html',
   styleUrls: ['./password-strength-meter.component.scss'],
+  imports: [PSMProgressBarDirective],
 })
 export class PasswordStrengthMeterComponent implements OnChanges {
-  @Input({ required: true }) password: string = '';
+  @Input({ required: true }) password!: string;
 
   @Input() minPasswordLength = 8;
 
-  @Input() enableFeedback = false;
+  @Input({ transform: booleanAttribute }) enableFeedback = false;
 
-  @Input() enableAsync = false;
+  @Input({ transform: booleanAttribute }) enableAsync = false;
 
   @Input() colors: string[] = [];
 
@@ -45,16 +50,17 @@ export class PasswordStrengthMeterComponent implements OnChanges {
 
   @HostBinding('class') baseClass = 'psm';
 
-  passwordStrength: number | null = null;
+  private passwordStrengthMeterService: IPasswordStrengthMeterService = inject(
+    IPasswordStrengthMeterService
+  );
 
+  passwordStrength: number | null = null;
   feedback: Feedback | null = null;
 
   private prevPasswordStrength: number | null = null;
   private passwordChangeObservable$ = new Subject<string>();
 
-  constructor(
-    private passwordStrengthMeterService: IPasswordStrengthMeterService
-  ) {
+  constructor() {
     this.init();
   }
 

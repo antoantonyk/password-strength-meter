@@ -1,0 +1,11 @@
+<h4>Using Custom Service</h4>
+<div class="input-field">
+  <input type="text" [(ngModel)]="text" placeholder="Using a custom service" />
+  <password-strength-meter
+    [password]="text"
+    enableFeedback
+    (strengthChange)="onPasswordStrengthChange($event)"
+  />
+
+  <p>Score: {{ score }}</p>
+</div>

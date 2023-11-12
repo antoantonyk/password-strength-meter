@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/directive-selector */
 import {
   Directive,
   ElementRef,
@@ -9,15 +10,15 @@ import {
 } from '@angular/core';
 
 @Directive({
-  // eslint-disable-next-line
+  standalone: true,
   selector: '.psm__progress-bar',
 })
 export class PSMProgressBarDirective implements OnChanges {
   @Input({ required: true })
-  numberOfProgressBarItems: number = 5;
+  numberOfProgressBarItems!: number;
 
   @Input({ required: true })
-  passwordStrength: number | null = null;
+  passwordStrength!: number | null;
 
   @Input()
   colors: string[] = [];

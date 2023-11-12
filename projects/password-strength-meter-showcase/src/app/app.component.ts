@@ -1,56 +1,32 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {
-  UntypedFormGroup,
-  UntypedFormBuilder,
-  Validators,
-} from '@angular/forms';
+  RouterLinkActive,
+  RouterLinkWithHref,
+  RouterOutlet,
+} from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { PasswordStrengthMeterComponent } from 'angular-password-strength-meter';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    RouterLinkWithHref,
+    RouterLinkActive,
+    FormsModule,
+    PasswordStrengthMeterComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  userForm: UntypedFormGroup;
+  text: string = '';
+  score: number | null = null;
 
-  get fullName() {
-    return this.userForm.get('fullName');
-  }
-
-  get email() {
-    return this.userForm.get('email');
-  }
-
-  get password() {
-    return this.userForm.get('password');
-  }
-
-  constructor(private fb: UntypedFormBuilder) {
-    this.userForm = this.fb.group({
-      fullName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.pattern('[^ @]*@[^ @]*')]],
-      password: ['', Validators.required],
-    });
-  }
-
-  onPasswordStrengthChanged(strength: number | null) {
-    console.log('====================================');
-    console.log('onPasswordStrengthChanged', strength);
-    console.log('====================================');
-  }
-
-  onSubmit() {
-    if (this.userForm.valid) {
-      console.log('====================================');
-      console.log('userForm', this.userForm);
-      console.log('====================================');
-    } else {
-      console.log('====================================');
-      console.log('Invalid Form');
-      console.log('====================================');
-      Object.keys(this.userForm.controls).forEach((key) => {
-        this.userForm.get(key)?.markAsDirty();
-      });
-    }
+  public onPasswordStrengthChange(score: number | null) {
+    this.score = score;
   }
 }
