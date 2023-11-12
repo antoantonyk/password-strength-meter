@@ -10,7 +10,6 @@ import { By } from '@angular/platform-browser';
 
 import { PasswordStrengthMeterComponent } from './password-strength-meter.component';
 import { IPasswordStrengthMeterService } from './password-strength-meter-service';
-import { PSMProgressBarDirective } from './psm-progress-bar.directive';
 
 describe(PasswordStrengthMeterComponent.name, () => {
   let component: PasswordStrengthMeterComponent;
@@ -25,7 +24,7 @@ describe(PasswordStrengthMeterComponent.name, () => {
       );
 
     TestBed.configureTestingModule({
-      declarations: [PasswordStrengthMeterComponent, PSMProgressBarDirective],
+      imports: [PasswordStrengthMeterComponent],
       providers: [
         {
           provide: IPasswordStrengthMeterService,

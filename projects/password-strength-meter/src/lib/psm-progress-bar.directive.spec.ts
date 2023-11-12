@@ -5,7 +5,6 @@ import {
   FeedbackResult,
   IPasswordStrengthMeterService,
 } from './password-strength-meter-service';
-import { PSMProgressBarDirective } from './psm-progress-bar.directive';
 
 class PasswordStrengthMeterService extends IPasswordStrengthMeterService {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -39,7 +38,7 @@ describe('Directive: PasswordStrengthMeter - ProgressBar', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [PSMProgressBarDirective, PasswordStrengthMeterComponent],
+      imports: [PasswordStrengthMeterComponent],
       providers: [
         {
           provide: IPasswordStrengthMeterService,
