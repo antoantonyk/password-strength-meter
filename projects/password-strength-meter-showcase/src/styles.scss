@@ -2,8 +2,8 @@
 @import 'bootstrap/scss/bootstrap';
 
 :root {
-  --input-padding-x: .75rem;
-  --input-padding-y: .75rem;
+  --input-padding-x: 0.75rem;
+  --input-padding-y: 0.75rem;
 }
 
 html,
@@ -17,4 +17,10 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: #f5f5f5;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  margin-top: 48px;
 }

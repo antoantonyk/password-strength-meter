@@ -14,9 +14,14 @@ export class CustomPsmServiceService extends IPasswordStrengthMeterService {
   scoreWithFeedback(password: string): FeedbackResult {
     console.log('CustomPsmServiceService', password);
 
+    const score = this.randomNumber(0, 4);
+
     return {
-      score: this.randomNumber(0, 4),
-      feedback: { warning: '', suggestions: [] },
+      score,
+      feedback: {
+        warning: `Custom warning with score ${score}`,
+        suggestions: [`Here some custom suggestions can be provided`],
+      },
     };
   }
 
