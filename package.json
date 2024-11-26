@@ -33,7 +33,7 @@
     "@angular/forms": "^18.2.8",
     "@angular/platform-browser": "^18.2.8",
     "@angular/platform-browser-dynamic": "^18.2.8",
-    "@angular/router": "^18.2.8",
+    "@angular/router": "^19.0.1",
     "bootstrap": "^5.3.3",
     "rxjs": "~7.8.1",
     "tslib": "^2.7.0",
