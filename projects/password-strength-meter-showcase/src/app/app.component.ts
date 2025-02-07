@@ -9,18 +9,17 @@ import { FormsModule } from '@angular/forms';
 import { PasswordStrengthMeterComponent } from 'angular-password-strength-meter';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterOutlet,
-    RouterLinkWithHref,
-    RouterLinkActive,
-    FormsModule,
-    PasswordStrengthMeterComponent,
-  ],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+    selector: 'app-root',
+    imports: [
+        CommonModule,
+        RouterOutlet,
+        RouterLinkWithHref,
+        RouterLinkActive,
+        FormsModule,
+        PasswordStrengthMeterComponent,
+    ],
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   text: string = '';

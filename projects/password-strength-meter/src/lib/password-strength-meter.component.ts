@@ -27,11 +27,10 @@ import {
 import { PSMProgressBarDirective } from './psm-progress-bar.directive';
 
 @Component({
-  standalone: true,
-  selector: 'password-strength-meter',
-  templateUrl: './password-strength-meter.component.html',
-  styleUrls: ['./password-strength-meter.component.scss'],
-  imports: [PSMProgressBarDirective],
+    selector: 'password-strength-meter',
+    templateUrl: './password-strength-meter.component.html',
+    styleUrls: ['./password-strength-meter.component.scss'],
+    imports: [PSMProgressBarDirective]
 })
 export class PasswordStrengthMeterComponent implements OnChanges {
   @Input({ required: true }) password!: string;

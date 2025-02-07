@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-custom-component',
-  templateUrl: './custom-component.component.html',
-  styleUrl: './custom-component.component.scss',
+    selector: 'app-custom-component',
+    templateUrl: './custom-component.component.html',
+    styleUrl: './custom-component.component.scss',
+    standalone: false
 })
 export class CustomComponentComponent {
   text: string = '';

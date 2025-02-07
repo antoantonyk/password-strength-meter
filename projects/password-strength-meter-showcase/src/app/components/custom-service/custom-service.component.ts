@@ -8,17 +8,16 @@ import { CustomPsmServiceService } from '../../services/custom-psm-service/custo
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-custom-service',
-  standalone: true,
-  imports: [CommonModule, FormsModule, PasswordStrengthMeterComponent],
-  providers: [
-    {
-      provide: IPasswordStrengthMeterService,
-      useClass: CustomPsmServiceService,
-    },
-  ],
-  templateUrl: './custom-service.component.html',
-  styleUrl: './custom-service.component.scss',
+    selector: 'app-custom-service',
+    imports: [CommonModule, FormsModule, PasswordStrengthMeterComponent],
+    providers: [
+        {
+            provide: IPasswordStrengthMeterService,
+            useClass: CustomPsmServiceService,
+        },
+    ],
+    templateUrl: './custom-service.component.html',
+    styleUrl: './custom-service.component.scss'
 })
 export class CustomServiceComponent {
   text: string = '';
